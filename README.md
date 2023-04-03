@@ -10,6 +10,20 @@
 ---------------------------------------------------------------------------------------------------------------
 ## 2. Abstract
 
+ project
+  -Create a project and invite others
+  
+ search
+  -Search for a destination and add it to your project page
+  
+ share
+  -Schedules added by project participants are shared with other participants in real time
+  
+ comunicate
+  -Project participants freely share their opinions using the chat function
+  -Calculate travel expenses according to schedule and show them to participants
+  
+  
 
 ---------------------------------------------------------------------------------------------------------------
 
