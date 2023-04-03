@@ -9,10 +9,22 @@
 
 ---------------------------------------------------------------------------------------------------------------
 ## 2. Abstract
+
+ project
+  -Create a project and invite others
+  
+ search
+  -Search for a destination and add it to your project page
+  
+ share
+  -Schedules added by project participants are shared with other participants in real time
+  
+ comunicate
+  -Project participants freely share their opinions using the chat function
+  -Calculate travel expenses according to schedule and show them to participants
   
   
-The travel planner <WAGO> is a website that enables young people such as college students to conveniently plan their trip before going on a trip. Existing websites are
-commercial websites that connect package companies, or there is no function to create a planner at the same time as people going on a trip. So we decided to develop a website you can work together to create a planner at the same time and provide services such as paying for travel expenses.  
+
 ---------------------------------------------------------------------------------------------------------------
 
 ### 3. 시연 영상
