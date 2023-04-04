@@ -1,10 +1,4 @@
 const InviteButton = () => {
-  
-  
-  const handleInvite = () => {
-
-
-  }  
   return(
     <button>
       +초대
