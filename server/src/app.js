@@ -9,8 +9,6 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 // 환경설정
 import dotenv from 'dotenv';
-import userRouter from "../../../planner-server/src/routers/userRouter.js";
-import projectRouter from "../../../planner-server/src/routers/projectRouter.js";
 
 dotenv.config();
 
@@ -35,8 +33,8 @@ mongoose
     .then(() => console.log('Successfully connected mongodb'))
     .catch((e) => console.error(e));
 
-app.use('/api/users', userRouter);
-app.use('/api/projects', projectRouter);
+// app.use('/api/users', userRouter);
+// app.use('/api/projects', projectRouter);
 
 app.listen(port, () => {
     console.log(`http is listening to ${port}`);
