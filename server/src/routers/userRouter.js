@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import {createUser} from "../../../../planner-server/src/services/userService.js";
 import {User} from "../models/userModel.js";
 const userRouter = Router();
 
