@@ -1,4 +1,4 @@
-import {User} from "../models/userModel.js";
+import {User} from "server/src/models/userModel.js";
 
 const errorGenerator = (message, statusCode = 500) => {
     const error = new Error(message);

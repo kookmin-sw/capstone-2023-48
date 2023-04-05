@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {User} from "../models/userModel.js";
+import {User} from "server/src/models/userModel.js";
 const userRouter = Router();
 
 userRouter.post('/', async (req, res) => {
