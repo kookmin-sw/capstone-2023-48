@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {User} from "server/src/models/userModel.js";
+import {getUserById, updateUser} from "server/src/services/userService.js";
 import {createUser} from "server/src/services/userService.js";
 const userRouter = Router();
 
@@ -11,33 +12,41 @@ userRouter.post('/', async (req, res) => {
     res.send(user);
 })
 
-userRouter.post('/login', async (req, res) => {
-    User.findOne({ id: req.body.id }, (err,user) => {
-        if ( !user ){
-            return res.json({
-                loginSuccess : false,
-                message : "id를 다시 확인하세요."
-            });
+userRouter.post('/sign_in', async (req_, res_) => {
+    try {
+        const { id, password } = req_.body;
+        const user = await getUserById(id);
+        if (!user) {
+            throw new Error('User not found');
         }
-
-        user.comparePassword(req.body.password, (err, isMatch) => {
-            if ( !isMatch ){
-                return res.json({
-                    loginSuccess : false,
-                    message : "비밀번호가 틀렸습니다."
-                });
-            }
-            user.generateToken((err,user) => {
-                if (err) return res.status(400).send(err);
-
-                res
-                    .cookie("hasVisited", user.token)
-                    .status(200)
-                    .json({ loginSuccess : true, userId : user._id});
-            });
-        });
-    });
+        const isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+            throw new Error('Wrong password!');
+        }
+        const { token, result } = await user.generateToken();
+        result.token = token;
+        const updatedRow = await updateUser(user._id, result);
+        if (updatedRow.modifiedCount <= 0) {
+            throw new Error('Sign in error!');
+        }
+        res_
+            .cookie('w_auth', token, {
+                expires: new Date('9999-12-31'),
+                secure: false,
+                httpOnly: false,
+                signed: true,
+            })
+            .cookie('user_id', String(user._id), {
+                expires: new Date('9999-12-31'),
+                secure: false,
+                httpOnly: false,
+                signed: false,
+            })
+            .status(200)
+            .json({ success: true, data: 'Sign in successfully' });
+    } catch (err_) {
+        res_.status(404).json({ success: false, data: err_.message });
+    }
 });
-
 
 export default userRouter;
