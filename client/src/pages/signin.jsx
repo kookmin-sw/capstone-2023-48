@@ -2,10 +2,19 @@ import React from 'react';
 import '../assets/styles/signin.style.scss';
 import SignInObject from '../components/sliderObject/signInObject'
 import { useEffect, useRef } from "react";
+import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
 
 const SignIn = () => {
-
+  const [cookies, setCookies] = useCookies();
   const sliderDivRef = useRef();
+  const history = useNavigate();
+
+  useEffect(() => {
+    if (cookies.w_auth) {
+      history('/projectList');
+    }
+  }, [cookies]);
 
   useEffect(() => {
     const wheelHandler = (e) =>{

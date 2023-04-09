@@ -2,6 +2,7 @@ import {React, useState} from 'react';
 import {Link} from 'react-router-dom';
 import '../../assets/styles/signinForm.style.scss';
 import axios from 'axios';
+import {loginUser} from "../../action/user-action";
 
 const defaultFormFields = {
   email: '',
@@ -29,29 +30,21 @@ const SignInForm = () => {
     e.preventDefault();
 
     //response user's email and pwd
-    const response = await axios.post(' https://2981ce98-3a7d-4491-9af2-b1d1b80a486f.mock.pstmn.io/login', {
+    await loginUser({
       email,
       password,
     }).then((response) =>{
       console.log(response.data);
-      if(response.data === true){
+      if (response.data.success === true){
         //success sign in -> move to projectList
         window.location.replace("/projectList");
       }
       else{
         //failed login
+        setLoginError("이메일 또는 비밀번호가 올바르지 않습니다");
         console.log("login fail");
       }
     })
-
-    if(response.data.success){
-      //success sign in -> move to projectList
-      
-    } else {
-      //fail sign in
-      setLoginError("이메일 또는 비밀번호가 올바르지 않습니다");
-    } 
-
   }
 
   return (

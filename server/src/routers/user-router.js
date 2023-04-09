@@ -1,21 +1,21 @@
 import { Router } from 'express';
-import {User} from "server/src/models/userModel.js";
-import {getUserById, updateUser} from "server/src/services/userService.js";
-import {createUser} from "server/src/services/userService.js";
+import * as userServices from '../services/user-service.js';
+
 const userRouter = Router();
 
 userRouter.post('/', async (req, res) => {
     const { name, id, password, phone } = req.body;
-    const user = await createUser({
+    const user = await userServices.createUser({
         name, id, password, phone
     });
     res.send(user);
 })
 
 userRouter.post('/sign_in', async (req_, res_) => {
+    console.log('!');
     try {
         const { id, password } = req_.body;
-        const user = await getUserById(id);
+        const user = await userServices.getUserById(id);
         if (!user) {
             throw new Error('User not found');
         }
@@ -25,10 +25,7 @@ userRouter.post('/sign_in', async (req_, res_) => {
         }
         const { token, result } = await user.generateToken();
         result.token = token;
-        const updatedRow = await updateUser(user._id, result);
-        if (updatedRow.modifiedCount <= 0) {
-            throw new Error('Sign in error!');
-        }
+        console.log(result);
         res_
             .cookie('w_auth', token, {
                 expires: new Date('9999-12-31'),

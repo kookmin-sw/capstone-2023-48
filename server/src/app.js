@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 // 환경설정
 import dotenv from 'dotenv';
 
-import userRouter from '/server/src/routers/user-router.js';
+import userRouter from './routers/user-router.js';
 dotenv.config();
 
 const app = express();

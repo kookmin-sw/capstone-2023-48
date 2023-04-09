@@ -8,12 +8,19 @@ export const api = axios.create({
 });
 
 export async function registerUser(args) {
-    const response = await api.post('/users', args);
+    const response = await api.post('/users', {
+        name: args.userName,
+        id: args.email,
+        password: args.password,
+        phone: args.phoneNumber,
+    });
     return response;
 }
 
 export async function loginUser(args) {
-    const response = await api.post('/users/sign_in',
-        args, {withCredentials: true});
+    const response = await api.post('/users/sign_in', {
+        id: args.email,
+        password: args.password,
+    }, {withCredentials: true});
     return response;
 }

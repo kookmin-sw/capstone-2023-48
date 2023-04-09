@@ -18,7 +18,6 @@ const userSchema = new Schema({
     id: {
         type: String,
         required: true,
-        maxlength: 15,
         unique: 1,
     },
     password: {
@@ -29,6 +28,9 @@ const userSchema = new Schema({
     phone: {
         type: String,
         required: true,
+    },
+    token: {
+        type: String,
     }
 });
 

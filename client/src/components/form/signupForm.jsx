@@ -2,6 +2,7 @@ import { useState } from 'react';
 import SignUpButton from '../button/signupButton';
 import axios from 'axios';
 import {registerUser} from "../../action/user-action";
+import {useNavigate} from "react-router-dom";
 
 const defaultFormFields = {
   email: '',
@@ -11,7 +12,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-
+  const history = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email,password,confirmPassword,phoneNumber,userName } = formFields;
 
@@ -32,14 +33,17 @@ const SignUpForm = () => {
     }
     else {
       //send user data to server
-      const response = await registerUser({
+      await registerUser({
         email,
         password,
         phoneNumber,
         userName,
-      });
-      console.log(response);
-      //history.push('/projectList');
+      }).then((res) => {
+        if (res.status === 200) {
+          history('/');
+        }
+      }).catch((e) => console.log(e));
+
     }
   }
   
