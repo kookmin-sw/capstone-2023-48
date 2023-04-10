@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import SignUpButton from '../button/signupButton';
 import axios from 'axios';
+import {registerUser} from "../../action/user-action";
+import {useNavigate} from "react-router-dom";
 
 const defaultFormFields = {
   email: '',
@@ -10,7 +12,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-
+  const history = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email,password,confirmPassword,phoneNumber,userName } = formFields;
 
@@ -22,35 +24,39 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     console.log('비밀번호 일치 X 확인')
+    console.log('!');
     //when password and confirmPassword are diffrent
-    if(password !== confirmPassword){
+    if (password !== confirmPassword){
       console.log('비밀번호 일치 X')
       alert('비밀번호가 일치하지 않습니다')
       e.preventDefault();
     }
-    else{      
-    
+    else {
       //send user data to server
-      const response = await axios.post('/sign-up',{
+      await registerUser({
         email,
         password,
         phoneNumber,
         userName,
-      });      
-      //history.push('/projectList');
+      }).then((res) => {
+        if (res.status === 200) {
+          history('/');
+        }
+      }).catch((e) => console.log(e));
+
     }
   }
   
   return(
-    <form className="sign-up-form" onSubmit={handleSubmit}>
+    <div className="sign-up-form">
       <h2>회원가입</h2>
       <input placeholder="이메일" type="email" name="email" required onChange={handleChange} value={email}/>
       <input placeholder="비밀번호" type="password" name="password" required onChange={handleChange} value={password}/>
       <input placeholder="비밀번호 확인" type="password" name="confirmPassword" required onChange={handleChange} value={confirmPassword}/>
       <input placeholder="휴대폰 번호" type="text" name="phoneNumber" required onChange={handleChange} value={phoneNumber}/>
       <input placeholder="이름" type="text" name="userName" required onChange={handleChange} value={userName}/>
-      <SignUpButton/>
-    </form>
+      <SignUpButton onClickButton={() => handleSubmit()}/>
+    </div>
   )
 }
 

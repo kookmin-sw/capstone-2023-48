@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import '../../assets/styles/signInButton.style.scss'
 
-const SignUpButton = () => {
-
+const SignUpButton = (props) => {
+    const { onClickButton } = props;
   return (
-    <button type="submit" className="custom-button sign-in-button">
-      <Link className="sign-in-link" to='/projectList'>    
+    <button onClick={onClickButton} className="custom-button sign-in-button">
         회원가입
-      </Link>
     </button>
   );
 };
