@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import InviteButton from '../button/inviteButton';
+import { Link } from 'react-router-dom';
 
 const defaultProjectData = {
   projectName: 'DEFAULT PROJECT NAME',
@@ -16,7 +17,7 @@ const ProjectForm = () => {
 
   return(
     <div className="project">
-      <h2>{projectName}</h2>
+      <Link to='/mainpage'><h2>{projectName}</h2></Link>
       <InviteButton/>
     </div>
   )

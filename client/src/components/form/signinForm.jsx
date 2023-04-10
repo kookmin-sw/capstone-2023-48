@@ -1,8 +1,9 @@
-import {React, useState} from 'react';
+import {React, useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import '../../assets/styles/signinForm.style.scss';
-import axios from 'axios';
 import {loginUser} from "../../action/user-action";
+import { UserContext } from '../../contexts/user.context';
+
 
 const defaultFormFields = {
   email: '',
@@ -11,18 +12,22 @@ const defaultFormFields = {
 
 const SignInForm = () => {
 
-  
+
   //Manage user's email and password by useState()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const [loginError, setLoginError] = useState('');
 
+  //take currentUser data from context
+  const { currentUser } = useContext(UserContext);
+  const { setCurrentUser } = useContext(UserContext);
+  
   //when user enter email or password field
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({...formFields, [name]: value });
   }
 
+  //when user click login button
   const handleSubmit = async(e) => {
 
     console.log("handleSubmit")
@@ -39,6 +44,9 @@ const SignInForm = () => {
         //success sign in -> move to projectList
         console.log(response.data);
         console.log("login success");
+
+        setCurrentUser(formFields);
+        console.log(currentUser);        
         window.location.replace("/projectList");
       }
       else{
@@ -57,7 +65,6 @@ const SignInForm = () => {
       <button className="custom-button sign-in-button">
         로그인
       </button>
-      {loginError && <div className='login-error'>{loginError}</div>}
       <p>회원이 아니신가요? 
         <Link className="sign-up-link" to='/sign-up'>
           회원가입

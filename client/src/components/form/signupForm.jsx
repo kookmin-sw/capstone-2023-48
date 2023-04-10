@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import SignUpButton from '../button/signupButton';
-import axios from 'axios';
 import {registerUser} from "../../action/user-action";
 import {useNavigate} from "react-router-dom";
+
 
 const defaultFormFields = {
   email: '',
