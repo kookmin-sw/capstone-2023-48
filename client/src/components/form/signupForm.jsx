@@ -27,7 +27,6 @@ const SignUpForm = () => {
     console.log('!');
     //when password and confirmPassword are diffrent
     if (password !== confirmPassword){
-      console.log('비밀번호 일치 X')
       alert('비밀번호가 일치하지 않습니다')
       e.preventDefault();
     }
@@ -40,6 +39,7 @@ const SignUpForm = () => {
         userName,
       }).then((res) => {
         if (res.status === 200) {
+          console.log('send data ', formFields );
           history('/');
         }
       }).catch((e) => console.log(e));
