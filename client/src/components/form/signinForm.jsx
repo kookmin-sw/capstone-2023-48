@@ -37,11 +37,13 @@ const SignInForm = () => {
       console.log(response.data);
       if (response.data.success === true){
         //success sign in -> move to projectList
+        console.log(response.data);
+        console.log("login success");
         window.location.replace("/projectList");
       }
       else{
         //failed login
-        setLoginError("이메일 또는 비밀번호가 올바르지 않습니다");
+        alert("이메일 또는 비밀번호가 올바르지 않습니다");
         console.log("login fail");
       }
     })

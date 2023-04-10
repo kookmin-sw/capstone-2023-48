@@ -42,7 +42,7 @@ userRouter.post('/sign_in', async (req_, res_) => {
             .status(200)
             .json({ success: true, data: 'Sign in successfully' });
     } catch (err_) {
-        res_.status(404).json({ success: false, data: err_.message });
+        res_.json({ success: false, data: err_.message });
     }
 });
 
