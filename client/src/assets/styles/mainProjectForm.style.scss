@@ -1,7 +1,19 @@
-.main_project_form_wrapper{
-  height: 100%;
+.main-project-form-wrapper{
+  display: flex;
+  flex-direction: column;
   flex: 2;
   display: flex;
   border-radius: 32px;
-  background-color: aqua;
+  background-color: #fff;
+  margin: 10px;
 }
+
+
+
+
+
+
+
+
+
+

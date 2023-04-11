@@ -1,10 +1,10 @@
-import SignUpNavigation from '../components/navigation/signInNavigation';
 import SignUpForm from '../components/form/signupForm';
+import Navigation from '../components/navigation/navigation';
 
 const SignUp = () => {
   return(
     <div>
-      <SignUpNavigation/>
+      <Navigation/>
       <SignUpForm/>
     </div>
   )

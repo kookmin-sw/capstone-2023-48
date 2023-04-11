@@ -4,6 +4,7 @@ import SignInObject from '../components/sliderObject/signInObject'
 import { useEffect, useRef } from "react";
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
+import Navigation from '../components/navigation/navigation';
 
 const SignIn = () => {
   const [cookies, setCookies] = useCookies();
@@ -86,6 +87,7 @@ const SignIn = () => {
   }, []);
   return (
     <div ref={sliderDivRef} className="slider">
+      <Navigation/>
       <SignInObject/>
       <SignInObject/>
       <SignInObject/>

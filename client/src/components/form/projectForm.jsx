@@ -17,10 +17,17 @@ const ProjectForm = () => {
 
   return(
     <div className="project">
-      <Link to='/mainpage'><h2>{projectName}</h2></Link>
+      <Link to='/mainpage'>
+        <h2>{projectName}</h2>
+      </Link>
       <InviteButton/>
     </div>
   )
 }
 
 export default ProjectForm;
+
+
+
+
+

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import Navigation from '../routes/navigation';
+import Navigation from '../components/navigation/navigation';
+import ProjectForm from '../components/form/projectForm';
 
 const ProjectList = () => {
   return (
     <div>
       <Navigation/>
-      <h1>Project List Page</h1>
+      <ProjectForm/>
     </div>
   );
 };

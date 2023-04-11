@@ -1,7 +1,9 @@
+import '../../assets/styles/mainProjectForm.style.scss';
+
 const MainProjectForm = () =>{
   return(
-    <div className="main_project_form_wrapper">
-
+    <div className="main-project-form-wrapper">
+      MainProject
     </div>
   )
 }
