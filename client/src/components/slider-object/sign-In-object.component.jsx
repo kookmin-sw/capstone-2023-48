@@ -1,4 +1,4 @@
-import SignInForm from '../form/signinForm'
+import SignInForm from "../sign-in-form/sign-in-form.component";
 
 const SignInObject = () => {
 

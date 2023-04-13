@@ -1,6 +1,6 @@
 import {React, useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
-import '../../assets/styles/signinForm.style.scss';
+import './sign-in-form.style.scss';
 import {loginUser} from "../../action/user-action";
 import { UserContext } from '../../contexts/user.context';
 
@@ -18,18 +18,17 @@ const SignInForm = () => {
   const { email, password } = formFields;
 
   //take currentUser data from context
-  const { currentUser } = useContext(UserContext);
   const { setCurrentUser } = useContext(UserContext);
-  
+  const { currentUser } = useContext(UserContext);
   //when user enter email or password field
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({...formFields, [name]: value });
   }
-
+ 
   //when user click login button
   const handleSubmit = async(e) => {
-
+    
     console.log("handleSubmit")
 
     e.preventDefault();
@@ -39,14 +38,12 @@ const SignInForm = () => {
       email,
       password,
     }).then((response) =>{
-      console.log(response.data);
+      
       if (response.data.success === true){
         //success sign in -> move to projectList
-        console.log(response.data);
         console.log("login success");
-
         setCurrentUser(formFields);
-        console.log(currentUser);        
+        
         window.location.replace("/projectList");
       }
       else{

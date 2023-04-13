@@ -1,10 +1,10 @@
 import React from 'react';
-import '../assets/styles/signin.style.scss';
-import SignInObject from '../components/sliderObject/signInObject'
+import './sign-in.style.scss';
+import SignInObject from '../components/slider-object/sign-In-object.component'
 import { useEffect, useRef } from "react";
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
-import Navigation from '../components/navigation/navigation';
+import Navigation from '../components/navigation/navigation.component';
 
 const SignIn = () => {
   const [cookies, setCookies] = useCookies();

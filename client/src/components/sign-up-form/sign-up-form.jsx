@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SignUpButton from '../button/signupButton';
+import SignUpButton from '../button/sign-up-button.component';
 import {registerUser} from "../../action/user-action";
 import {useNavigate} from "react-router-dom";
 

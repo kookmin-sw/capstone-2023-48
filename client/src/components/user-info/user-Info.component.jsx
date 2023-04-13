@@ -1,5 +1,5 @@
 
-const UserProfile = () => {
+const UserInfo = () => {
   return(
     <div className="user-profile-container">
       <img src='client/src/components/form' alt="유저이미지"/>
@@ -9,4 +9,4 @@ const UserProfile = () => {
   )
 };
 
-export default UserProfile;
+export default UserInfo;

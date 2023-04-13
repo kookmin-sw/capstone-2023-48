@@ -1,4 +1,4 @@
-import '../../assets/styles/chattingForm.style.scss';
+import './chatting-form.style.scss';
 
 const ChattingForm = () => {
   return(
