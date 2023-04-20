@@ -1,10 +1,9 @@
 import SignUpForm from '../components/sign-up-form/sign-up-form';
-import Navigation from '../components/navigation/navigation.component';
+import './sign-up.style.scss';
 
 const SignUp = () => {
   return(
-    <div>
-      <Navigation/>
+    <div className='sign-up-wrapper'>
       <SignUpForm/>
     </div>
   )

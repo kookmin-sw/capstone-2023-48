@@ -1,0 +1,76 @@
+.slider{
+  width:100%;
+  overflow-y: auto;
+  height:93vh;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-object{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.first-object{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/images/train_railway_forest.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.sign-in-wrapper{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+  0 10px 10px rgba(0,0,0,0.22);
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 70vh;
+  margin: 0px;
+  box-sizing: border-box;
+  border-radius: 35px;
+  justify-content: center;
+  max-width: 800px;
+  min-width: 700px;
+
+  .sign-in-left{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F6416C;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    // background-image: url(../../assets/images/sign-in-background.png);
+    background-size: cover;
+    .introduction{
+      font-family: 'Ubuntu', serif;
+      font-size: 30px;
+      color: black;
+      margin: 40px;
+    }
+  }
+
+  .sign-in-right{
+    width: 50%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;   
+    background-color: #F8F3D4; 
+    border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
+  }
+}
+
+.divder{
+  width: 100%;
+  height: 5px;
+  background-color: gray;
+}
