@@ -1,9 +1,9 @@
-import {React, useState, useContext} from 'react';
+import {React, useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './sign-in-form.style.scss';
 import {loginUser} from "../../action/user-action";
 import { UserContext } from '../../contexts/user.context';
-
+import { useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
   email: '',
@@ -11,14 +11,14 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-
-
+  const navigate = useNavigate();
   //Manage user's email and password by useState()
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
   //take currentUser data from context
   const { setCurrentUser } = useContext(UserContext);
+  const { setDisplayUserName } = useContext(UserContext);
   const { currentUser } = useContext(UserContext);
   //when user enter email or password field
   const handleChange = (event) => {
@@ -43,8 +43,10 @@ const SignInForm = () => {
         //success sign in -> move to projectList
         console.log("login success");
         setCurrentUser(formFields);
+        console.log('current user : ',currentUser);
+        setDisplayUserName(currentUser.email.substring(0, email.indexOf("@")));
         
-        window.location.replace("/projectList");
+        navigate('/projectList')
       }
       else{
         //failed login
