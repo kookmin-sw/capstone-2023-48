@@ -6,17 +6,15 @@ import './project-list-style.scss';
 const ProjectList = () => {
 
   const { projectList } = useContext(ProjectContext);
-
+  console.log(projectList);
   return (
     <div className='project-wrapper'>
-      {projectList ? (
-        projectList.map((project) => {
-          <ProjectForm key={project.id} project={project}/>
-        })
-      ) : (
-        // <div>아직 프로젝트가 없습니다!</div>
-        <ProjectForm/>
-      )}
+      {projectList.map((project) => (
+        <ProjectForm key={project.id} project={project}/>
+      ))}
+      <button>
+        +프로젝트 추가
+      </button>
     </div>
   );
 };

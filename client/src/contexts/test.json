@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "projectName": "Test_Project_01", 
+    "places": "서울특별시",
+    "placeImgSrc": "",
+    "projectMember": "유저1,유저2,유저3",
+    "projectDate": "2023-04-01"
+  },
+  {
+    "id": 2,
+    "projectName": "Test_Project_02", 
+    "places": "대구특별시",
+    "placeImgSrc": "",
+    "projectMember": "유저3,유저4,유저5",
+    "projectDate": "2023-06-03"
+  }
+]
