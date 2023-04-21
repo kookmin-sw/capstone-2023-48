@@ -61,8 +61,8 @@ const SignInForm = () => {
       <h2>로그인 하세요!</h2>
       <input placeholder="이메일" type="email" name="email" required onChange={handleChange} value={email}/>
       <input placeholder="비밀번호" type="password" name="password" required onChange={handleChange} value={password}/>
-      <button className="custom-button sign-in-button">
-        로그인
+      <button class="custom-btn sign-in-btn">
+        <span>로그인</span>
       </button>
       <p>회원이 아니신가요? 
         <Link className="sign-up-link" to='/sign-up'>

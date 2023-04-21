@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import TESTPROJECT from './test.json';
 
 const addProject = (projectList, projectToAdd) => {
   return [...projectList, { projectToAdd }]
@@ -11,11 +12,13 @@ const removeProject = (projectList, projectToRemove) => {
 export const ProjectContext = createContext({
   projectList : [],
   setProjectList : () => {},
+  currentProject : null,
+  setCurrentProject : () => {},
 });
 
 export const ProjectProvider = ({ children }) => {
-  const [projectList, setProjectList] = useState(null)
-  
+  const [projectList, setProjectList] = useState(TESTPROJECT)
+  const [currentProject, setCurrentProject] = useState(null);
   const addProjectToList = (projectToAdd) => {
     setProjectList(addProject(projectList,projectToAdd))
   }
@@ -24,9 +27,11 @@ export const ProjectProvider = ({ children }) => {
   }
   const value = {
     projectList, 
+    currentProject,
     setProjectList,
     addProjectToList,
     removeProjectFromList,
+    setCurrentProject,
   };
   
  return <ProjectContext.Provider value={value}>{children}</ProjectContext.Provider>
