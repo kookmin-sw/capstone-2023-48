@@ -9,29 +9,47 @@
   // background-color: #EDF1D6;
 
   h2{
-    color:#F6416C;
+    color:black;
   }
 
   input{
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background-color: hsla(0, 0%, 0%, 0.098);
-    width: 90%;
+    background-color: #ffdb251a;
+    width: 315px;
     border: 0;
-    margin: 0 0 15px;
+    margin: 15px;
     padding: 15px;
     box-sizing: border-box;
     font-size: 18px;
-    border-bottom: 1px solid white;
+    box-shadow: 0 0 0 3px black inset;
   }
   
   .sign-up-link{
     text-decoration: none;
-    color: #F6416C
+    color: black
   }
 
   p{
     color: black;
   }
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  color: black;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  margin: 20px;
 }
 
