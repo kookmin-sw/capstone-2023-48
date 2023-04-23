@@ -12,7 +12,7 @@ const ProjectList = () => {
       {projectList.map((project) => (
         <ProjectForm key={project.id} project={project}/>
       ))}
-      <button>
+      <button onClick={()=>{}}>
         +프로젝트 추가
       </button>
     </div>
