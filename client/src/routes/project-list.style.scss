@@ -1,0 +1,39 @@
+.project-body{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #ffdc25;
+
+  .project-slider{
+    display:flex;
+    width: 85%;
+    max-width: 1280px;
+    height: 93vh;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+    scroll-snap-type: x madatory;
+
+    &::-webkit-scrollbar {
+      height: 0.5rem;
+      width: 0.5rem;
+      border-radius: 1rem;
+      background: green;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background: black;
+    }
+  
+    &::-webkit-scrollbar-track {
+      border-radius: 1rem;
+      background: white;
+    }
+  }
+
+}
+.prev-btn .next-btn{
+  font-size: 16px;
+}
