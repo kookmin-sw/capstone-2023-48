@@ -1,14 +1,14 @@
 .project-form-wrapper{
   box-sizing: border-box;
   border-radius: 32px;
-  margin: 20px;
+  margin: 10px;
   border: 3px solid black;
   background-color: whitesmoke;
   scroll-snap-align: start;
   
   .project-form-link{
-    width: 350px;
-    height: 500px;
+    width: 600px;
+    height: 200px;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
       border: 3px solid red;
       display: flex;
       justify-content:space-between;
-      // align-items: center;
+      align-items: center;
       height: 50%;
     }
     .project-form-downside{

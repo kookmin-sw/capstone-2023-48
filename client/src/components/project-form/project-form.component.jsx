@@ -1,5 +1,4 @@
 import {React, useContext} from 'react';
-import InviteButton from '../button/invite-button.component';
 import { Link } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
 import './project-form.style.scss';
@@ -28,7 +27,6 @@ const ProjectForm = ({project}) => {
           <p className='project-date'>{projectDate}</p>
           <div className='project-form-member'>
             <p className='project-member'>{projectMember}</p>
-            <InviteButton/>
           </div>
         </div>
       </Link>

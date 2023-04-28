@@ -4,6 +4,7 @@ import Logo from '../../assets/images/navigation_logo.png';
 import { UserContext } from '../../contexts/user.context';
 import './navigation.style.scss';
 
+//Navigation for all pages
 const Navigation = () => {
   
   const {currentUser} = useContext(UserContext); 

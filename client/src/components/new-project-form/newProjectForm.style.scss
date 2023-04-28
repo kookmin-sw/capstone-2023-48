@@ -1,0 +1,15 @@
+.new-project-form-wrapper{
+  position:absolute;
+  background-color:#f9e47f;
+  width: 500px;
+  height: 600px;
+  
+  .new-project-form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

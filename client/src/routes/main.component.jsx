@@ -17,17 +17,19 @@ const MainPage = () => {
   const {currentProject} = useContext(ProjectContext);
   const {cureentUser} = useContext(UserContext);
   const [mainContent,setMainContent] = useState(defaultMainContent);
-
-  useEffect(() =>{
-
-    async function getMainContent(){
-      try{
-        const response = await axios.get('/mainContent');
-        setMainContent(response.data);
-      } catch (error){
-        console.log(error);
-      }
+  
+  //set main content : chatting log, places, member
+  const getMainContent = async () => {
+    try{
+      const response = await axios.get('/mainContent');
+      setMainContent(response.data);
+    } catch (error){
+      console.log(error);
     }
+  }
+
+  
+  useEffect(() =>{
     getMainContent();
   },[mainContent]);
 
