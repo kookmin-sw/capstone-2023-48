@@ -1,16 +1,35 @@
 import './newProjectForm.style.scss';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import { UserContext } from '../../contexts/user.context';
+import axios from 'axios';
 
 //form for add new project to projectlist
 const NewProjectForm = ({onClose}) =>{
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [title, setTitle] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [member, setMember] = useState('');
 
-  const newProjectSubmit = () => {
+  //post userId by current user (ex. 1234@naver.com)
+  const {currentUser} = useContext(UserContext);
 
+  const handleNewProjectSubmit = async () => {
+    try {
+      const response = await axios.post('/newData', {
+        title: title,
+        start_date: startDate,
+        end_date: endDate,
+        member: member,
+        userId: currentUser        
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(title,startDate,endDate,member,currentUser);
+      console.error(error);
+    }
   }
 
   return(
@@ -38,7 +57,7 @@ const NewProjectForm = ({onClose}) =>{
             endDate
           />
         </div>
-        <button type='submit' className='new-project-submit' onChange={newProjectSubmit}>새 프로젝트 생성</button>
+        <button type='submit' className='new-project-submit' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
      </form>
    </div>
   )
