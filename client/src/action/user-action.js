@@ -24,3 +24,13 @@ export async function loginUser(args) {
     }, {withCredentials: true});
     return response;
 }
+
+export async function createNewProject(args){
+    const response = await api.post('/users/createNewProject',{
+        projectTitle: args.projectTitle,
+        startDate: args.startDate,
+        endDate: args.endDate,
+        user: args.currentUser,
+    });
+    return response;
+}

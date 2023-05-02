@@ -3,33 +3,41 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import {useState, useContext} from "react";
 import { UserContext } from '../../contexts/user.context';
-import axios from 'axios';
+import { ProjectContext } from '../../contexts/project.context';
+import { createNewProject } from "../../action/user-action";
 
 //form for add new project to projectlist
 const NewProjectForm = ({onClose}) =>{
 
-  const [title, setTitle] = useState('');
+  const [projectTitle, setProjectTitle] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [member, setMember] = useState('');
 
   //post userId by current user (ex. 1234@naver.com)
   const {currentUser} = useContext(UserContext);
 
+  const {addProjectToList} = useContext(ProjectContext);
+
+  const  handleTitleChange = (e) => {
+    const{value} = e.target;
+    setProjectTitle(value);
+    console.log(projectTitle);
+  }
+
   const handleNewProjectSubmit = async () => {
-    try {
-      const response = await axios.post('/newData', {
-        title: title,
-        start_date: startDate,
-        end_date: endDate,
-        member: member,
-        userId: currentUser        
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.log(title,startDate,endDate,member,currentUser);
-      console.error(error);
-    }
+    await createNewProject({
+      projectTitle,
+      startDate,
+      endDate,
+      currentUser,   
+    }).then((res) => {
+      //add project to projectList context
+      addProjectToList(res.data);
+      console.log('project added', res.data);
+    }).catch((error) => {
+      console.log(error);
+      console.log(projectTitle,startDate,endDate,currentUser);
+    });
   }
 
   return(
@@ -40,7 +48,7 @@ const NewProjectForm = ({onClose}) =>{
           프로젝트 제목
           <button onClick={onClose}>X</button>
         </label>
-        <input type='text' name='project-title' required/>
+        <input type='text' name='projectTitle' onChange={handleTitleChange} required/>
         <div className='date-picker'>
           <label htmlFor="start-date">시작일:</label>
           <DatePicker
