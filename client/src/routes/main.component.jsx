@@ -1,6 +1,9 @@
-import ChattingForm from '../components/chatting/chatting-form.component';
 import './main.style.scss';
-import Map from '../components/map/map.component';
+import ChattingForm from '../components/chatting/chatting-form.component';
+import Map from '../components/sideBar/map/map.component';
+import Detail from '../components/sideBar/detail/detail.component';
+import Member from '../components/sideBar/member/member.component';
+import SideBar from '../components/sideBar/sideBar.component';
 import { UserContext } from '../contexts/user.context';
 import { ProjectContext } from '../contexts/project.context';
 import { useContext, useEffect, useState } from 'react';
@@ -16,26 +19,18 @@ const MainPage = () => {
 
   const {currentProject} = useContext(ProjectContext);
   const {cureentUser} = useContext(UserContext);
-  const [mainContent,setMainContent] = useState(defaultMainContent);
-  
-  //set main content : chatting log, places, member
-  const getMainContent = async () => {
-    try{
-      const response = await axios.get('/mainContent');
-      setMainContent(response.data);
-    } catch (error){
-      console.log(error);
-    }
+  const [activeComponent, setActiveComponent] = useState('home');
+
+  const handleActiveComponentChange = (component) => {
+    setActiveComponent(component);
   }
-
-  
-  useEffect(() =>{
-    getMainContent();
-  },[mainContent]);
-
+  console.log(activeComponent);
   return(
     <div className='main-page-wrapper'>
-      <Map/>
+      <SideBar handleActiveComponentChange={handleActiveComponentChange}/>
+      {activeComponent === 'home' && <Map/>}
+      {activeComponent === 'detail' && <Detail/>}
+      {activeComponent === 'member' && <Member/>}
       <ChattingForm/>
     </div>
   )

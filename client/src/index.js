@@ -6,16 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/user.context';
 import { ProjectProvider } from './contexts/project.context';
+import { NavermapsProvider } from 'react-naver-maps';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <ProjectProvider>
-          <App /> 
-        </ProjectProvider>
-      </UserProvider>
+      <NavermapsProvider ncpClientId='btdlu526am'>
+        <UserProvider>
+          <ProjectProvider>
+            <App /> 
+          </ProjectProvider>
+        </UserProvider>
+      </NavermapsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

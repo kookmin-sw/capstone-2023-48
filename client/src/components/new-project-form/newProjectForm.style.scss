@@ -1,9 +1,12 @@
 .new-project-form-wrapper{
-  position:absolute;
-  background-color:#f9e47f;
+  position:fixed;
+  border: 3px solid #f9e47f;
+  background-color:white;
   width: 500px;
   height: 600px;
-  
+  transition: opacity 0.3s ease-in-out; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
   .new-project-form{
     width: 100%;
     height: 100%;
@@ -17,5 +20,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  input{
+    margin:10px;
+    font-size: 1rem;
+  }
+  label{
+    font-size: 1rem;
+  }
+  .exit-btn{
+    position: absolute;
+    top:3%;
+    right:3%;
+    background: none;
+    border: 0;
+    font-size: 18px;
+  }
+  .new-project-submit-btn{
+    margin-top: 20px;
+    outline:none;;
+    border: 0;
+    padding:15px;
+    font-size:1rem;
+    font-weight:bold;
+    letter-spacing:.1em;
+    background: #f9e47f;
+    color: white;
   }
 }

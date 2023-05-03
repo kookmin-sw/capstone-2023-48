@@ -24,6 +24,7 @@ const NewProjectForm = ({onClose}) =>{
     console.log(projectTitle);
   }
 
+  //post new project data then receive project data to add projectList context
   const handleNewProjectSubmit = async () => {
     await createNewProject({
       projectTitle,
@@ -44,20 +45,20 @@ const NewProjectForm = ({onClose}) =>{
     //new-project-form style place in sign-in-form.style.scss , share style with sign-in/sign-up
     <div className='new-project-form-wrapper'>
       <form className='new-project-form'> 
+        <button className='exit-btn' onClick={onClose}>X</button>
         <label>
           프로젝트 제목
-          <button onClick={onClose}>X</button>
         </label>
         <input type='text' name='projectTitle' onChange={handleTitleChange} required/>
         <div className='date-picker'>
-          <label htmlFor="start-date">시작일:</label>
+          <label htmlFor="start-date">시작일</label>
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             dateFormat="yyyy-MM-dd"
             selectsStart
           />
-          <label htmlFor="end-date">종료일:</label>
+          <label htmlFor="end-date">종료일</label>
           <DatePicker
             selected={endDate}
             onChange={(date) => setEndDate(date)}
@@ -65,7 +66,7 @@ const NewProjectForm = ({onClose}) =>{
             endDate
           />
         </div>
-        <button type='submit' className='new-project-submit' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
+        <button type='submit' className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
      </form>
    </div>
   )
