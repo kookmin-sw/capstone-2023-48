@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "projectName": "Test_Project_01", 
+    "places": "서울특별시",
+    "placeImgSrc": "",
+    "projectMember": "유저1,유저2,유저3",
+    "projectDate": "2023-04-01"
+  },
+  {
+    "id": 2,
+    "projectName": "Test_Project_02", 
+    "places": "대구광역시",
+    "placeImgSrc": "",
+    "projectMember": "유저4,유저5",
+    "projectDate": "2023-09-22"
+  },
+  {
+    "id": 3,
+    "projectName": "Test_Project_03", 
+    "places": "수원시",
+    "placeImgSrc": "",
+    "projectMember": "유저1",
+    "projectDate": "2023-02-03"
+  },
+  {
+    "id": 4,
+    "projectName": "Test_Project_04", 
+    "places": "광주광역시",
+    "placeImgSrc": "",
+    "projectMember": "유저3,유저4,유저5",
+    "projectDate": "2023-10-31"
+  },
+  {
+    "id": 5,
+    "projectName": "Test_Project_05", 
+    "places": "제주도",
+    "placeImgSrc": "",
+    "projectMember": "유저1,유저10",
+    "projectDate": "2023-01-23"
+  }
+]
