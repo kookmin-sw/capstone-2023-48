@@ -31,7 +31,7 @@ export const ProjectProvider = ({ children }) => {
     setProjectList,
     addProjectToList,
     removeProjectFromList,
-    setCurrentProject,
+    
   };
   
  return <ProjectContext.Provider value={value}>{children}</ProjectContext.Provider>
