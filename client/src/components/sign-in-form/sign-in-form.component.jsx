@@ -38,14 +38,11 @@ const SignInForm = () => {
       email,
       password,
     }).then((response) =>{
-      
+      console.log(response);
       if (response.data.success === true){
         //success sign in -> move to projectList
-        console.log("login success");
         setCurrentUser(formFields);
-        console.log('current user : ',currentUser);
-        setDisplayUserName(currentUser.email.substring(0, email.indexOf("@")));
-        
+        setDisplayUserName(formFields.email.substring(0, email.indexOf("@")));
         navigate('/projectList')
       }
       else{

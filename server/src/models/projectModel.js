@@ -1,35 +1,42 @@
 import mongoose, { Schema } from 'mongoose';
 
 const projectSchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
-
-    period: {
-        type: String,
+    startAt: {
+        type: Number,
         required: true,
     },
-
-    member: {
-        type: [String],
+    endAt: {
+        type: Number,
         required: true,
     },
-
-    place:{
-        type: [String],
-        required: true,
-    },
-
-    detail_place:{
-        type: [String],
-        required: true,
-    },
-
-    plan:{
-        type: [String],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     }
-
+    //
+    // member: {
+    //     type: [String],
+    //     required: true,
+    // },
+    //
+    // place:{
+    //     type: [String],
+    //     required: true,
+    // },
+    //
+    // detail_place:{
+    //     type: [String],
+    //     required: true,
+    // },
+    //
+    // plan:{
+    //     type: [String],
+    //     required: true,
+    // }
 });
 export const Project = mongoose.model('Project', projectSchema);

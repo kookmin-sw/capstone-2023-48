@@ -17,6 +17,11 @@ export async function registerUser(args) {
     return response;
 }
 
+export async function getUser(userId) {
+    const response = await api.get(`/users/${userId}`)
+    return response;
+}
+
 export async function loginUser(args) {
     const response = await api.post('/users/sign_in', {
         id: args.email,

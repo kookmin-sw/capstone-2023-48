@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import FirstObject from '../components/slider-object/first-object-component'
 import { useEffect, useRef } from "react";
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
+import {getUser} from "../action/user-action";
+import {UserContext} from "../contexts/user.context";
 
 const Landing = () => {
-  // const [cookies, setCookies] = useCookies();
+  const [cookies, setCookies] = useCookies();
   const sliderDivRef = useRef();
-  // const history = useNavigate();
+  const history = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
+  const { setDisplayUserName } = useContext(UserContext);
 
-  // useEffect(() => {
-  //   if (cookies.w_auth) {
-  //     history('/projectList');
-  //   }
-  // }, [cookies]);
+  useEffect(() => {
+    (async function () {
+      console.log(cookies);
+      if (cookies.w_auth) {
+        const response = await getUser(cookies.user_id);
+        setCurrentUser({ email: response.data.id, password: response.data.password });
+        setDisplayUserName(response.data.id.substring(0, response.data.id.indexOf("@")));
+        history('/projectList');
+      }
+    })();
+  }, [cookies]);
+
 
   useEffect(() => {
     const wheelHandler = (e) =>{

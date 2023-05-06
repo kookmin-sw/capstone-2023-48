@@ -3,6 +3,12 @@ import * as userServices from '../services/user-service.js';
 
 const userRouter = Router();
 
+userRouter.get('/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const user = await userServices.getUserByObjectId(userId);
+    res.send(user);
+})
+
 userRouter.post('/', async (req, res) => {
     const { name, id, password, phone } = req.body;
     const user = await userServices.createUser({
