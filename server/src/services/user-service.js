@@ -26,5 +26,3 @@ export async function updateUser(userId_, newUser_) {
     const result = await User.updateOne({ _id: userId_ }, newUser_);
     return result;
 }
-
-
