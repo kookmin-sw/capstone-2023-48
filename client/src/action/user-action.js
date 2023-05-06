@@ -22,11 +22,6 @@ export async function getUser(userId) {
     return response;
 }
 
-export async function getProjectList(userID) {
-    const response = await api.get(`/users/${userId}`)
-    return response;
-}
-
 export async function loginUser(args) {
     const response = await api.post('/users/sign_in', {
         id: args.email,
