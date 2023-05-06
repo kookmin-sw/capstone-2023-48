@@ -1,16 +1,17 @@
-import {Project} from "server/src/models/projectModel";
+import {Project} from "../models/projectModel.js";
 
 export async function createProject(args) {
-
     const project = new Project({
-        name: args.name,
-        period: args.period,
-        member: args.member,
-        place: args.place,
-        detail_place: args.detail_place,
-        plan:args.plan
+        title: args.title,
+        creatAt: args.createAt,
+        endAt: args.endAt,
+        owner: args.userId,
     })
-
     const result = await project.save();
     return result;
+}
+
+export async function getProjectById(userId) {
+    const project = await aProject.find({ owner: userId });
+    return project;
 }

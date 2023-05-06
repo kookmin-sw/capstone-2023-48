@@ -21,8 +21,13 @@ export async function getUserById(userId_) {
     const user = await User.findOne({ id: userId_ });
     return user;
 }
-
+export async function getUserByObjectId(userId_) {
+    const user = await User.findOne({ _id: userId_ });
+    return user;
+}
 export async function updateUser(userId_, newUser_) {
     const result = await User.updateOne({ _id: userId_ }, newUser_);
     return result;
 }
+
+

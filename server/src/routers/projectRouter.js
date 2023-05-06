@@ -1,14 +1,20 @@
 import { Router } from 'express';
-import {createProject} from "server/src/services/projectService";
+import {createProject, getProjectById} from "../services/projectService.js";
 const projectRouter = Router();
 
+
+projectRouter.get('/:userId', async (req, res) => {
+    const { userId } = req.params;
+    const project = await getProjectById(userId);
+    res.send(project);s
+});
 projectRouter.post('/', async (req, res) => {
-    const { name, period, member, place, detail_place, plan } = req.body;
+    const { title, createAt, endAt, userId } = req.body;
     const project = await createProject({
-        name, period, member, place, detail_place, plan
+        title, createAt, endAt, userId
     });
     res.send(project);
-})
+});
 export default projectRouter;
 
 
