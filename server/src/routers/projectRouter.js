@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {createProject} from "../../../../planner-server/src/services/projectService.js";
+import {createProject} from "server/src/services/projectService";
 const projectRouter = Router();
 
 projectRouter.post('/', async (req, res) => {
@@ -10,3 +10,6 @@ projectRouter.post('/', async (req, res) => {
     res.send(project);
 })
 export default projectRouter;
+
+
+

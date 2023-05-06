@@ -1,0 +1,26 @@
+.chatting-form-wrapper{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fff;
+
+  .chatting-header{
+    height: 8%;
+  }
+  .chatting-body {
+    height: 92%;
+    display: flex;
+    padding: 10px;
+  }  
+
+  .chatting{
+    background-color: rgb(62, 255, 149);
+    border-radius: 32px;
+    width: 100%;
+    margin: 15px;
+  }
+}
+
+
+
+
