@@ -15,9 +15,15 @@ const ProjectForm = (props) => {
     navigate('/mainpage')
   }
 
-  //delete projecct from ProjectList
   const handleDeleteClick = (event) => {
     event.stopPropagation();
+    
+    //delete projecct from ProjectList
+    {
+
+      
+    }
+
     //change refresh then update projectlist
     setRefresh();
   }
