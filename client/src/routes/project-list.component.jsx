@@ -16,12 +16,14 @@ const ProjectList = () => {
     (async function () {
       if (cookies.w_auth) {
         const response = await getProjectList(cookies.user_id);
-        if (response.data.length) {
+        if (response.data.length !== 0) {
           setProjectList(response.data);
         }
       }
     })();
   }, [cookies, refresh]);
+
+  console.log(projectList);
 
   const [newProjectFormVisible,setNewProjectFormVisible] = useState(false);
   
@@ -40,8 +42,8 @@ const ProjectList = () => {
         <button className='new-project-btn' onClick={toggleFormVisible}>
           +프로젝트 추가
         </button>
-        {projectList.map((project) => (
-          <ProjectForm key={project.id} project={project}/>
+        {projectList && projectList.map((project) => (
+          <ProjectForm key={project.id} project={project} setRefresh={() => setRefresh(refresh + 1)}/>
         ))}
       </div>
     </div>

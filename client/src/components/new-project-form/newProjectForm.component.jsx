@@ -17,19 +17,14 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
 
   //post userId by current user (ex. 1234@naver.com)
   const {currentUser} = useContext(UserContext);
-  const {addProjectToList} = useContext(ProjectContext);
 
   const handleTitleChange = (e) => {
     const {value} = e.target;
     setProjectTitle(value);
-    console.log(projectTitle);
   }
 
   //post new project data then receive project data to add projectList context
   const handleNewProjectSubmit = async () => {
-    console.log(projectTitle);
-    console.log(startDate.getTime());
-    console.log(endDate.getTime());
     await createProject({
       title: projectTitle,
       startAt: startDate.getTime(),
@@ -41,6 +36,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
       console.log(error);
       console.log(projectTitle,startDate,endDate,currentUser);
     });
+    onClose();
   }
 
   return(
@@ -55,17 +51,21 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
         <div className='date-picker'>
           <label htmlFor="start-date">시작일</label>
           <DatePicker
+            className='date-picker-input'
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             dateFormat="yyyy-MM-dd"
             selectsStart
-          />
+            readOnly={true}
+            />
           <label htmlFor="end-date">종료일</label>
           <DatePicker
+            className='date-picker-input'
             selected={endDate}
             onChange={(date) => setEndDate(date)}
             dateFormat="yyyy-MM-dd"
             endDate
+            readOnly={true}
           />
         </div>
         <button type="button" className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>

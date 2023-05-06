@@ -20,6 +20,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+    .date-picker-input{
+      cursor: default !important;
+    }
   }
   input{
     margin:10px;
