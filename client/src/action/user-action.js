@@ -37,5 +37,6 @@ export async function createNewProject(args){
         endDate: args.endDate,
         user: args.currentUser,
     });
+    
     return response;
 }
