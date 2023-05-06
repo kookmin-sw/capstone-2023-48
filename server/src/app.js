@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 
 import userRouter from './routers/user-router.js';
+import projectRouter from "./routers/project-router.js";
 dotenv.config();
 
 const app = express();
@@ -35,7 +36,7 @@ mongoose
     .catch((e) => console.error(e));
 
 app.use('/api/users', userRouter);
-// app.use('/api/projects', projectRouter);
+app.use('/api/projects', projectRouter);
 
 app.listen(port, () => {
     console.log(`http is listening to ${port}`);

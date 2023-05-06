@@ -7,7 +7,10 @@ export const api = axios.create({
     baseURL: 'http://localhost:5001/api',
 });
 
-export async function registerUser(args) {
+export async function getUser(userId) {
+    const response = await api.get(`/users/${userId}`);
+    return response;
+}export async function registerUser(args) {
     const response = await api.post('/users', {
         name: args.userName,
         id: args.email,

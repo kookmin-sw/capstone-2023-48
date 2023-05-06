@@ -11,3 +11,8 @@ export async function getProjectList(userId) {
     const response = await api.get(`/projects/${userId}`);
     return response;
 }
+
+export async function createProject(args) {
+    const response = await api.post(`/projects`, args);
+    return response;
+}

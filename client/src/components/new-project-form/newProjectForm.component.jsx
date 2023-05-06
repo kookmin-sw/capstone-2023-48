@@ -5,36 +5,38 @@ import {useState, useContext} from "react";
 import { UserContext } from '../../contexts/user.context';
 import { ProjectContext } from '../../contexts/project.context';
 import { createNewProject } from "../../action/user-action";
+import {createProject} from "../../action/project-action";
+import {useCookies} from "react-cookie";
 
 //form for add new project to projectlist
-const NewProjectForm = ({onClose}) =>{
-
+const NewProjectForm = ({onClose, setRefresh}) =>{
+  const [cookies, setCookies] = useCookies();
   const [projectTitle, setProjectTitle] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
   //post userId by current user (ex. 1234@naver.com)
   const {currentUser} = useContext(UserContext);
-
   const {addProjectToList} = useContext(ProjectContext);
 
-  const  handleTitleChange = (e) => {
-    const{value} = e.target;
+  const handleTitleChange = (e) => {
+    const {value} = e.target;
     setProjectTitle(value);
     console.log(projectTitle);
   }
 
   //post new project data then receive project data to add projectList context
   const handleNewProjectSubmit = async () => {
-    await createNewProject({
-      projectTitle,
-      startDate,
-      endDate,
-      currentUser,   
+    console.log(projectTitle);
+    console.log(startDate.getTime());
+    console.log(endDate.getTime());
+    await createProject({
+      title: projectTitle,
+      startAt: startDate.getTime(),
+      endAt: endDate.getTime(),
+      userId: cookies.user_id,
     }).then((res) => {
-      //add project to projectList context
-      addProjectToList(res.data);
-      console.log('project added', res.data);
+      setRefresh();
     }).catch((error) => {
       console.log(error);
       console.log(projectTitle,startDate,endDate,currentUser);
@@ -44,7 +46,7 @@ const NewProjectForm = ({onClose}) =>{
   return(
     //new-project-form style place in sign-in-form.style.scss , share style with sign-in/sign-up
     <div className='new-project-form-wrapper'>
-      <form className='new-project-form'> 
+      <div className='new-project-form'>
         <button className='exit-btn' onClick={onClose}>X</button>
         <label>
           프로젝트 제목
@@ -66,8 +68,8 @@ const NewProjectForm = ({onClose}) =>{
             endDate
           />
         </div>
-        <button type='submit' className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
-     </form>
+        <button type="button" className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
+     </div>
    </div>
   )
 }

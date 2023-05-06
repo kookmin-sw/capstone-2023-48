@@ -3,7 +3,7 @@ import {Project} from "../models/projectModel.js";
 export async function createProject(args) {
     const project = new Project({
         title: args.title,
-        creatAt: args.createAt,
+        startAt: args.startAt,
         endAt: args.endAt,
         owner: args.userId,
     })
@@ -12,6 +12,10 @@ export async function createProject(args) {
 }
 
 export async function getProjectById(userId) {
-    const project = await aProject.find({ owner: userId });
-    return project;
+    const project = await Project.find({ owner: userId });
+    if (project.length) {
+        return project;
+    } else {
+        return [];
+    }
 }

@@ -1,14 +1,10 @@
 import './map.style.scss';
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
-
-
 const Map = () =>{
 
   const navermaps = useNavermaps();
   const input = document.createElement('input');
   const searchBox = new navermaps.places.SearchBox(input);
-  
-  
 
   return(
     <div className='main-content-wrapper'>

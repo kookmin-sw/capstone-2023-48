@@ -1,6 +1,5 @@
 import SignInForm from "../sign-in-form/sign-in-form.component";
 import './first-object.style.scss';
-import  ReactPlayer  from  'react-player/youtube'
 const FirstObject = () => {
 
   return(

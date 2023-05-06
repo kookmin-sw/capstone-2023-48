@@ -18,17 +18,15 @@ const defaultMainContent = {
 const MainPage = () => {
 
   const {currentProject} = useContext(ProjectContext);
-  const {cureentUser} = useContext(UserContext);
   const [activeComponent, setActiveComponent] = useState('home');
 
   const handleActiveComponentChange = (component) => {
     setActiveComponent(component);
   }
-  console.log(activeComponent);
   return(
     <div className='main-page-wrapper'>
       <SideBar handleActiveComponentChange={handleActiveComponentChange}/>
-      {activeComponent === 'home' && <Map/>}
+      {/*{activeComponent === 'home' && <Map/>}*/}
       {activeComponent === 'detail' && <Detail/>}
       {activeComponent === 'member' && <Member/>}
       <ChattingForm/>
