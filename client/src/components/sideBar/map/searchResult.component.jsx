@@ -1,10 +1,13 @@
 import './searchResult.style.scss';
-import { useState } from 'react';
 import { addPlace } from '../../../action/plan-action';
+import { ProjectContext } from '../../../contexts/project.context';
+import { useContext } from 'react';
 
 const SearchResult = (props) =>{
   const {result} = props;
   console.log(result);
+
+  const { setCurrentProject } = useContext(ProjectContext);
 
   //add place to plan
   const handleClick = async () => {
@@ -13,7 +16,10 @@ const SearchResult = (props) =>{
       result.formatted_address,
       result.geometry,
       result.photos,
-    )
+    ).then((res) => {
+      //res is project data
+      setCurrentProject(res.data);
+    })
   }
 
   return(
