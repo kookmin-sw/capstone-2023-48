@@ -6,8 +6,6 @@ import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS_LIBRARIES } from './config'; // 상수
 import SearchResult from './searchResult.component';
 
 const Map = () =>{
-  console.log('render');
-
   const containerStyle = {
     width: '100%',
     height: '100%'
@@ -19,23 +17,24 @@ const Map = () =>{
   };
  
   const searchBoxRef = useRef(null); 
-  const mapRef = useRef(null);
-  const [results, setResults] = useState();  
-  const [ center, setCenter ] = useState({
+  const [center, setCenter] = useState({
     lat: 37.609980,
     lng: 127.075017
   })
+
+  const [result, setresult] = useState();
+
   const  handlePlacesChange = () => {
-    const places = searchBoxRef.current.getPlaces();
-    
-    if(places){
+    if(searchBoxRef.current && searchBoxRef.current.getPlaces()){
+      const places = searchBoxRef.current.getPlaces();
       const place = places[0];
-      setCenter(place.geometry.location) 
-      setResults(places);
+      if(place){
+        setresult(place);
+        setCenter(place.geometry.location)
+      }
     }
   }
   
-  console.log(results);
   return(
     <div className='main-content-wrapper'>
       <LoadScript
@@ -46,7 +45,6 @@ const Map = () =>{
           mapContainerStyle={containerStyle}
           center={center}
           zoom={17}
-          onLoad={(map) => { mapRef.current = map; }}
           options={mapOptions}
         >
           <StandaloneSearchBox
@@ -72,18 +70,12 @@ const Map = () =>{
                 position: "absolute",
                 marginTop:'2%',
                 left: "10%",
-            
               }}
             />
           </StandaloneSearchBox>
         </GoogleMap>
       </LoadScript>
-      <div className='results-side'>
-        {results && results.map((result) => {
-          console.log('result send');
-          <SearchResult key={result.id} result={result}/>
-        })}
-      </div>
+      {result && <SearchResult result={result}/>}
     </div>
   )
 }
