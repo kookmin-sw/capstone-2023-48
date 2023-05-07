@@ -19,12 +19,10 @@ const SignUpForm = () => {
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormFields({...formFields, [name] : value});
-    console.log({formFields});
   }
 
   const handleSubmit = async (e) => {
     console.log('비밀번호 일치 X 확인')
-    console.log('!');
     //when password and confirmPassword are diffrent
     if (password !== confirmPassword){
       alert('비밀번호가 일치하지 않습니다')

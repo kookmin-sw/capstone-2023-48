@@ -26,7 +26,7 @@ const MainPage = () => {
   return(
     <div className='main-page-wrapper'>
       <SideBar handleActiveComponentChange={handleActiveComponentChange}/>
-      {/*{activeComponent === 'home' && <Map/>}*/}
+      {activeComponent === 'home' && <Map/>}
       {activeComponent === 'detail' && <Detail/>}
       {activeComponent === 'member' && <Member/>}
       <ChattingForm/>

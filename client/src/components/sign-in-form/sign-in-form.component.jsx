@@ -28,8 +28,6 @@ const SignInForm = () => {
  
   //when user click login button
   const handleSubmit = async(e) => {
-    
-    console.log("handleSubmit")
 
     e.preventDefault();
 
@@ -38,7 +36,7 @@ const SignInForm = () => {
       email,
       password,
     }).then((response) =>{
-      console.log(response);
+      
       if (response.data.success === true){
         //success sign in -> move to projectList
         setCurrentUser(formFields);
