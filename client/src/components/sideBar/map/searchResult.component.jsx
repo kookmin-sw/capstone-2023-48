@@ -5,36 +5,75 @@ import { useContext, useState, useRef, useEffect } from 'react';
 
 const SearchResult = (props) =>{
   
-  const { result } = props;
-  const { setCurrentProject } = useContext(ProjectContext);
+  const { result, setActiveComponent } = props;
+  const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
-  const TOTAL_SLIDES = result.photos.length-1;
-
+  const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
+  //translate when next/prev button clicked
   useEffect(() => {
     if(slideRef.current){
       slideRef.current.style.transition = 'all 0.5s ease-in-out';
-      slideRef.current.style.transform = `translateX(calc(-${currentSlide} * 600px))`; // 백틱을 사용하여 슬라이드로 이동하는 에니메이션을 만듭니다.
+      slideRef.current.style.transform = `translateX(calc(-${currentSlide} * 600px))`;
     }
   },[currentSlide])
 
   //toggle img list isVisible when img clicked
   const handleImgClick = () => {
     setToggleImgList(!toggleImgList);
+    setCurrentSlide(0);
   }
 
   //add place to plan
   const handleAddBtnClick = async () => {
+    setActiveComponent('detail');
     await addPlace(
-      result.name,
-      result.formatted_address,
-      result.geometry,
-      result.photos,
+      result.name, //여행지 이름
+      result.formatted_address, //여행지 주소
+      result.geometry, //여행지 좌표
+      result.photos, // 여행지 사진 Array (최대 length : 10)
     ).then((res) => {
-      //res is project data
+      
+      //res 프로젝트 업데이트 된 프로젝트 데이터 받기
+
+      //  project{
+        // endAt : 
+        // owner :
+        // startAt :
+        // title :
+        // places : [place1,place2,place2...]
+      //}
+
+
+      //  places
+      // {
+      //   'place_title':'여행지 이름'
+      //   'formatted_address':여행지 주소'
+      //   'geometry':'여행지 좌표'
+      //   'photos' : '여행지 사진 Array (최대 length : 10)'
+      //   'startAt' : '여행지 일정 시작시간'
+      //   'endAt' : '여행지 일정 죵료시간'
+      // }
+
       setCurrentProject(res.data);
+      const updatedProjectList = [...projectList];
+      
+      //업데이트할 프로젝트 인덱스 찾기
+      const projectIndex = updatedProjectList.findIndex(
+        (project) => project._id === currentProject._id
+      );
+      if (projectIndex !== -1) {
+        // 프로젝트 업데이트
+        updatedProjectList[projectIndex] = {currentProject};
+        // projectList 컨텍스트 업데이트
+        setProjectList(updatedProjectList);
+      }
     })
+  }
+
+  const handleImgListCloseBtnClick = () => {
+    setToggleImgList(false);
   }
 
   const handlePrevBtnClick = () => {
@@ -59,12 +98,14 @@ const SearchResult = (props) =>{
         // <ResultImgList key={result.photos.id} photos={result.photos} ref={slideRef}/>
         <div className='result-img-list' ref={slideRef}>
           {result.photos.map((photo) => {
+            const url = photo.getUrl()
             return(
-              <div className='result-img-list-item' key={photo.id}style={{ backgroundImage: `url(${photo.getUrl()})`}}/>
-            )
-          })}
+              <div className='result-img-list-item' key={url} style={{ backgroundImage: `url(${url})`}}/>
+              )
+            })}
         </div>
       }
+      {toggleImgList && <div className='result-img-list-close-btn' onClick={handleImgListCloseBtnClick}>X</div>}
       {toggleImgList &&
         <button 
           className='result-img-list-prev-btn'

@@ -9,6 +9,19 @@
   min-width: 1000px;
   bottom: 0;
 
+  .result-img-list-close-btn{
+    position: absolute;
+    left: calc(100% - 30px);
+    bottom: calc(100% + 470px);
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin: 0 auto;
+    z-index: 3;
+    cursor: pointer;
+    color: white;
+  }
+
   .result-img-list-prev-btn{
     position: absolute;
     height: 40px;
