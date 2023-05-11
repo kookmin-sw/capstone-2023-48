@@ -3,9 +3,9 @@ import Landing from "./routes/landing.component";
 import SignUp from "./routes/sign-up.component";
 import ProjectList from "./routes/project-list.component";
 import Mypage from "./routes/mypage.component";
-import { UserProvider } from "./contexts/user.context";
 import MainPage from "./routes/main.component";
 import Navigation from "./components/navigation/navigation.component";
+
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Route path="projectList" element={<ProjectList/>}/>
         <Route path="mypage" element={<Mypage/>}/>      
         <Route path="mainpage" element={<MainPage/>}/>
-      </Route>
+        </Route>
     </Routes>
   );
 }

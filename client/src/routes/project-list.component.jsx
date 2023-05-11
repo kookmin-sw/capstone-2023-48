@@ -37,7 +37,7 @@ const ProjectList = () => {
     <div className='project-body'>
       <div className='project-slider'>
         { newProjectFormVisible && 
-           <NewProjectForm onClose={toggleFormVisible} setRefresh={() => setRefresh(refresh + 1)}/>
+          <NewProjectForm onClose={toggleFormVisible} setRefresh={() => setRefresh(refresh + 1)}/>
         }
         <button className='new-project-btn' onClick={toggleFormVisible}>
           +프로젝트 추가

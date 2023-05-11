@@ -1,0 +1,14 @@
+.detail-plan-wrapper{
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  height: 100%;
+
+}
+
+.detail-plan-column{
+
+  border: 5px solid black;
+  width: fit-content;
+  height: fit-content;
+}
