@@ -12,6 +12,8 @@ const SearchResult = (props) =>{
   const slideRef = useRef(null);
   const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
   //translate when next/prev button clicked
+
+  //currentSlide가 바뀌면 해당 slide로 translate
   useEffect(() => {
     if(slideRef.current){
       slideRef.current.style.transition = 'all 0.5s ease-in-out';
@@ -25,29 +27,32 @@ const SearchResult = (props) =>{
     setCurrentSlide(0);
   }
 
-  //add place to plan
+  //추가버튼을 누르면 해당 장소를 현재 프로젝트의 places에 push
   const handleAddBtnClick = async () => {
     setActiveComponent('detail');
     await addPlace(
+      currentProject._id, //현재 프로젝트 id
       result.name, //여행지 이름
       result.formatted_address, //여행지 주소
       result.geometry, //여행지 좌표
       result.photos, // 여행지 사진 Array (최대 length : 10)
-    ).then((res) => {
+      ).then((res) => {
       
       //res 프로젝트 업데이트 된 프로젝트 데이터 받기
 
       //  project{
-        // endAt : 
-        // owner :
-        // startAt :
-        // title :
-        // places : [place1,place2,place2...]
-      //}
+      //   endAt : 
+      //   owner :
+      //   member : [user1,user2,user3...]
+      //   startAt :
+      //   title :
+      //   places : [place1,place2,place2...]
+      // }
 
 
-      //  places
+      //  place
       // {
+      //   'project_id: 현재 프로젝트 _id값
       //   'place_title':'여행지 이름'
       //   'formatted_address':여행지 주소'
       //   'geometry':'여행지 좌표'
@@ -56,7 +61,10 @@ const SearchResult = (props) =>{
       //   'endAt' : '여행지 일정 죵료시간'
       // }
 
+      //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
       setCurrentProject(res.data);
+
+      //프로젝트 리스트 복사
       const updatedProjectList = [...projectList];
       
       //업데이트할 프로젝트 인덱스 찾기
