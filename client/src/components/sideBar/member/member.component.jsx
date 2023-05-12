@@ -4,6 +4,7 @@ import UserCard from './userCard.component';
 import { useState, useEffect } from 'react';
 import { searchByEmail } from '../../../action/search-action';
 
+//검색 결과 테스트 데이터
 const test_search_result = 
   [
     {
@@ -47,15 +48,20 @@ const test_search_result =
 
 const Member = () =>{
 
-  const [searchId, setSearchId] = useState('');
-  const [searchResult, setSearchResult] = useState(test_search_result);
+  const [searchId, setSearchId] = useState(''); //searchId 유저에게 input으로 받은 값(이메일)
+  const [searchResult, setSearchResult] = useState(test_search_result);//초기값 테스트 데이터
+  
+  //change생길때마다 searchId업데이트
   const handleChange = (e) => {
     const {value} = e.target;
     setSearchId(value);
   }
 
   //입력이 바뀔때마다 입력+ 유저 정보 get => state에 result 저장 => render
+  //searcId가 test라면 이메일이 test로 시작하는 모든 유저 출력 test1,test12,test993...
   useEffect(() => {
+
+    //구현 안되서 일단 막아 놓음 args는 유저에게 입력받은 값 (이메일)
   // useEffect(async() => {
     // await searchByEmail(searchId).then((response) => {
     // setSearchResult(response.data);
