@@ -4,8 +4,8 @@ const UserCard = (props) => {
 
   const { user } = props;
 
-  const handleInvite = (email) => {
-    console.log(email);
+  const handleInvite = () => {
+    console.log(user.email);
   }
 
   return(
@@ -14,7 +14,7 @@ const UserCard = (props) => {
         <div className='user-card-name'>{user.name}</div>
         <div className='user-card-email'>{user.email}</div>
       </div>
-      <button className='user-card-invite-btn' onClick={handleInvite(user.email)}>초대</button>
+      <button className='user-card-invite-btn' onClick={handleInvite}>초대</button>
     </div>
   )
 }

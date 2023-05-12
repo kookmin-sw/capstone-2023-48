@@ -16,31 +16,31 @@ const test_search_result =
     },
     {
       "name": "홍길동3",
-      "email": "user2@naver.com"
+      "email": "user3@naver.com"
     },
     {
       "name": "홍길동4",
-      "email": "user2@naver.com"
+      "email": "user4@naver.com"
     },
     {
       "name": "홍길동5",
-      "email": "user2@naver.com"
+      "email": "user5@naver.com"
     },
     {
       "name": "홍길동6",
-      "email": "user2@naver.com"
+      "email": "user6@naver.com"
     },
     {
-      "name": "홍길동4",
-      "email": "user2@naver.com"
+      "name": "홍길동7",
+      "email": "user7@naver.com"
     },
     {
-      "name": "홍길동5",
-      "email": "user2@naver.com"
+      "name": "홍길동8",
+      "email": "user8@naver.com"
     },
     {
-      "name": "홍길동6",
-      "email": "user2@naver.com"
+      "name": "홍길동9",
+      "email": "user9@naver.com"
     }
   ]
 
