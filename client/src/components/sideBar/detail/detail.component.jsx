@@ -11,7 +11,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 //place의 테스트 데이터
 const test_place1 = {
   'id':'1',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',
@@ -22,7 +22,7 @@ const test_place1 = {
 }
 const test_place2 = {
   'id':'2',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',
@@ -33,7 +33,7 @@ const test_place2 = {
 }
 const test_place3 = {
   'id':'3',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',
@@ -44,7 +44,7 @@ const test_place3 = {
 }
 const test_place4 = {
   'id':'4',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',
@@ -55,7 +55,7 @@ const test_place4 = {
 }
 const test_place5 = {
   'id':'5',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',
@@ -66,7 +66,7 @@ const test_place5 = {
 }
 const test_place6 = {
   'id':'6',
-  'project_id':currentProject._id,
+  'project_id':'currentProject._id',
   'place_title':'여행지 이름',
   'formatted_address':'여행지 주소',
   'geometry':'여행지 좌표',

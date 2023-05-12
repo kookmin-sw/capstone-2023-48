@@ -1,7 +1,7 @@
 import SignInForm from "../sign-in-form/sign-in-form.component";
 import './first-object.style.scss';
 const FirstObject = () => {
-
+  
   return(
     <div className="first-object">
       <div className="sign-in-wrapper">
@@ -13,10 +13,8 @@ const FirstObject = () => {
         </div>
       </div>
       <span>Scroll ↓</span>
-      
     </div>
   )
-
 };
 
 
