@@ -1,11 +1,6 @@
 import '../mainContent.style.scss';
 import './detail.style.scss';
-import update from 'immutability-helper'
-import { updatePlaces } from '../../../action/project-action';
-import { useContext } from 'react';
-import { ProjectContext } from '../../../contexts/project.context';
-import { useCallback, useState, useEffect } from 'react'
-import Day from './day.component';
+import { useState } from 'react'
 import { DragDropContext, Draggable , Droppable } from 'react-beautiful-dnd';
 
 //place의 테스트 데이터
