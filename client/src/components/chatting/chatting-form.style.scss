@@ -1,12 +1,15 @@
 .chatting-form-wrapper{
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 400px;
+  min-width: 400px;
   background-color: #fff;
+  z-index: 3;
 
   .chatting-header{
     height: 8%;
   }
+
   .chatting-body {
     height: 92%;
     display: flex;
@@ -14,13 +17,9 @@
   }  
 
   .chatting{
-    background-color: rgb(62, 255, 149);
+    background-color: rgb(250, 237, 249);
     border-radius: 32px;
     width: 100%;
     margin: 15px;
   }
 }
-
-
-
-
