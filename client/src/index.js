@@ -9,7 +9,7 @@ import { ProjectProvider } from './contexts/project.context';
 import { DndProvider } from 'react-dnd'
 
 import { useDrag } from "react-dnd";
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

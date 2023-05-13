@@ -49,11 +49,20 @@ const test_search_result =
 const Member = () =>{
 
   const [searchId, setSearchId] = useState(''); //searchId 유저에게 input으로 받은 값(이메일)
-  const [searchResult, setSearchResult] = useState(test_search_result);//초기값 테스트 데이터
+  const [searchResult, setSearchResult] = useState([]);//초기값 테스트 데이터
   
   //change생길때마다 searchId업데이트
-  const handleChange = (e) => {
-    const {value} = e.target;
+  const handleChange = async (e) => {
+    const { value } = e.target;
+    console.log(value);
+    if (value) {
+        const result = await searchByEmail(value);
+        if (result.data.length) {
+            console.log(result.data);
+            setSearchResult(result.data.map((e) => ({ name: e.name, email: e.id, id: e._id})));
+
+        }
+    }
     setSearchId(value);
   }
 
@@ -75,8 +84,7 @@ const Member = () =>{
       <input className='search-bar' placeholder='이메일로 친구를 검색해보세요' value={searchId} onChange={handleChange}/>
     </div>
     <div className='search-result'>
-      {console.log(test_search_result)}
-      {test_search_result.map((user) => (<UserCard key={user.email} user={user}/>))}
+      {searchResult.map((user) => (<UserCard key={user._id} user={user}/>))}
     </div>
   </div>
   )

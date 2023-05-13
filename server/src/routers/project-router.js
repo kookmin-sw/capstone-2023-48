@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {createProject, getProjectById} from "../services/project-service.js";
+import {addMemberToProject, createProject, getProjectById} from "../services/project-service.js";
 const projectRouter = Router();
 
 
@@ -14,6 +14,12 @@ projectRouter.post('/', async (req, res) => {
         title, startAt, endAt, userId
     });
     res.send(project);
+});
+
+projectRouter.post('/member', async (req, res) => {
+    const { projectId, memberId } = req.body;
+    const result = await addMemberToProject(projectId, memberId);
+    res.send(result);
 });
 export default projectRouter;
 

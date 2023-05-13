@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import { ProjectContext } from '../../../contexts/project.context';
 import { useCallback, useState } from 'react'
 import PlaceCard from './placeCard';
-import { DragDropContext } from 'react-beautiful-dnd';
 
 //place의 테스트 데이터
 const test_place1 = {

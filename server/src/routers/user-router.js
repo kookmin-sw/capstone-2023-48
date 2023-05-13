@@ -8,7 +8,16 @@ userRouter.get('/:userId', async (req, res) => {
     const user = await userServices.getUserByObjectId(userId);
     res.send(user);
 })
-
+userRouter.get('/searchByEmail/:email', async (req, res) => {
+    const { email } = req.params;
+    console.log(email);
+    try {
+        const user = await userServices.userSearch(email);
+        res.send(user);
+    } catch (e) {
+        console.log(e);
+    }
+})
 userRouter.post('/', async (req, res) => {
     const { name, id, password, phone } = req.body;
     const user = await userServices.createUser({

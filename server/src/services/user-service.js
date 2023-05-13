@@ -30,4 +30,9 @@ export async function updateUser(userId_, newUser_) {
     return result;
 }
 
-
+export async function userSearch(email) {
+    const regex = new RegExp(email, 'i');
+    console.log(regex);
+    const result = await User.find({ id: { $regex: regex } });
+    return result || [];
+}

@@ -17,17 +17,14 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    }
-    //
-    // member: {
-    //     type: [String],
-    //     required: true,
-    // },
-    //
-    // place:{
-    //     type: [String],
-    //     required: true,
-    // },
+    },
+    member: {
+        type: [Schema.Types.ObjectId],
+        ref: 'User',
+    },
+    place:{
+        type: String,
+    },
     //
     // detail_place:{
     //     type: [String],

@@ -18,14 +18,20 @@ export async function createProject(args) {
 }
 
 //detail에서 invite버튼 눌렀을때 해당 프로젝트 _id, 초대받은 유저의 email args로 받아 post
-export async function addMemberToProject(args){
-    const response = await api.post(`/project/member`, args);
+export async function addMemberToProject(projectId, memberId){
+    console.log('@');
+    console.log(projectId);
+    console.log(memberId);
+    const response = await api.post(`/projects/member`, {
+        projectId,
+        memberId,
+    });
     return response; //멤버가 추가되어 업데이트된 프로젝트 데이터를 response
 }
 
 //detail에서 카드를 다른 위치에 drag and drop하여 순서를 일정의 순서를 바꿨을 때
 //해당 프로젝트 _id와 바뀐 순서의 places arra를 args로 받아 post
 export async function updatePlaces(args){
-    const response = await api.post(`/project/places`, args);
+    const response = await api.post(`/projects/places`, args);
     return response; //바뀐 일정으로 places를 업데이트한 프로젝트 데이터를 response
 }

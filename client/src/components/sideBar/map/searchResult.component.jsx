@@ -6,6 +6,7 @@ import { useContext, useState, useRef, useEffect } from 'react';
 const SearchResult = (props) =>{
   
   const { result, setActiveComponent } = props;
+  console.log(result);
   const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -106,7 +107,8 @@ const SearchResult = (props) =>{
         // <ResultImgList key={result.photos.id} photos={result.photos} ref={slideRef}/>
         <div className='result-img-list' ref={slideRef}>
           {result.photos.map((photo) => {
-            const url = photo.getUrl()
+            const url = photo.getUrl();
+            console.log(url);
             return(
               <div className='result-img-list-item' key={url} style={{ backgroundImage: `url(${url})`}}/>
               )
