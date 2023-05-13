@@ -4,7 +4,7 @@
   min-width: 500px;
   display: flex;
   flex-wrap : wrap;
-  background-color: #ffdc25;
+  background-color: #3c6d79;
   justify-content: space-between;
   box-sizing: border-box;
 
@@ -16,7 +16,7 @@
     text-decoration: none;
     
     h1{
-      color:black;
+      color:#f9af65;
       padding: 10px;
     }
   }
@@ -31,7 +31,8 @@
     
     .nav-link {
       padding: 10px 15px;
-      color:black;
+      color: #f9af65;
+      font-size: 20px;
       text-decoration: none;
       cursor: pointer;
     }
