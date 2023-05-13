@@ -8,63 +8,185 @@
   width: calc(100% - 480px);
   min-width: 1000px;
   bottom: 0;
-}
 
-.result-container{
+  .result-img-list-close-btn{
+    position: absolute;
+    left: calc(100% - 30px);
+    bottom: calc(100% + 470px);
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin: 0 auto;
+    z-index: 3;
+    cursor: pointer;
+    color: white;
+  }
+
+  .result-img-list-prev-btn{
+    position: absolute;
+    height: 40px;
+    width: 30px;
+    left: 10px;
+    bottom: calc(100% + 230px);
+    font-size: 15px;
+    background-color: white;
+    z-index: 2;
+  }
+  .result-img-list-next-btn{
+    position: absolute;
+    height: 40px;
+    width: 30px;
+    bottom: calc(100% + 230px);
+    left: calc(100% - 40px);
+    font-size: 15px;
+    background-color: white;
+    z-index: 2;
+  }
+  .result-img-list:first-child{
+    padding-left: calc(50% - 300px);
+  }
+  .result-img-list:first-child{
+    padding-right: calc(50% - 300px);
+  }
+  .result-img-list{
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: rgba( 1, 1, 1, 0.5 );
+    width: max-content;
+    height: 500px;
+    bottom: 100%;
+    overflow: hidden;
+    transform: translateX();
+    transition: all ease 1s;
+    
+    .result-img-list-item{
+      margin: 0 100px 0 100px;
+      width: 400px;
+      min-width: 400px;
+      height: 400px;
+      background-size: cover;
+      z-index: 1;
+    }
+  }
+
+  .result-container{
   display: flex;
   height: 100%;
   width: 100%;
   align-items: center;
   justify-content: space-between;
 
-  .result-img-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    width: 200px;
-    border: 1px solid red;
+    .result-img-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      width: 200px;
+      // border: 1px solid red;
+      cursor: pointer;
 
-    .result-img{
-      width: 180px;
-      max-width: 180px;
-      height: 180px;
-      background-size: cover;
-    }
-  }
-
-  .result-name-address-rating-wrapper{
-    height: 100%;
-    width: 65%;
-    border: 1px solid blue;
-
-    .result-name{
-      font-size: 28px;
-      margin: 10px;
+      .result-img{
+        width: 180px;
+        max-width: 180px;
+        height: 180px;
+        background-size: cover;
+        color:white;
+      }
     }
 
-    .result-address{
-      font-size: 15px;
-      margin: 10px;
+    .result-name-address-rating-wrapper{
+      height: 100%;
+      width: 65%;
+      // border: 1px solid blue;
+
+      .result-name{
+        font-size: 28px;
+        margin: 10px;
+      }
+
+      .result-address{
+        font-size: 15px;
+        margin: 10px;
+      }
+      
+      .result-rating{
+        font-size: 15px;
+        margin: 10px;
+      }
     }
     
-    .result-rating{
-      font-size: 15px;
-      margin: 10px;
-    }
-  }
-  
-  .result-add-btn-wrapper{
-    height: 100%;
-    width: 15%;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .result-add-btn-wrapper{
+      height: 100%;
+      width: 15%;
+      // border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .result-add-btn{
-      width: 70px;
-      height: 70px;
+      .result-add-btn{
+        width: 70px;
+        height: 70px;
+      }
     }
   }
+}
+.react-time-picker-wrapper{
+  width:150px;
+  display: flex;
+  flex-direction: column  ;
+}
+
+.react-time-picker {
+  display: inline-flex;
+  position: relative;
+}
+
+.react-time-picker__wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border: thin solid gray;
+}
+
+.react-time-picker__inputGroup {
+  min-width: calc((4px * 3) + 0.54em * 6 + 0.217em * 2);
+  flex-grow: 1;
+  padding: 0 2px;
+  box-sizing: content-box;
+}
+
+.react-time-picker__inputGroup__divider {
+  padding: 1px 0;
+  white-space: pre;
+}
+
+.react-time-picker__inputGroup__divider,
+.react-time-picker__inputGroup__leadingZero {
+  display: inline-block;
+}
+
+.react-time-picker__inputGroup__input {
+  min-width: 0.54em;
+  height: 100%;
+  position: relative;
+  padding: 0 1px;
+  border: 0;
+  background: none;
+  color: currentColor;
+  font: inherit;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.react-time-picker__inputGroup__input::-webkit-outer-spin-button,
+.react-time-picker__inputGroup__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }

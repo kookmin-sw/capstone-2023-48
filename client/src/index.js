@@ -6,21 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/user.context';
 import { ProjectProvider } from './contexts/project.context';
-import { NavermapsProvider } from 'react-naver-maps';
+import { DndProvider } from 'react-dnd'
+
+import { useDrag } from "react-dnd";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <NavermapsProvider ncpClientId='btdlu526am'>
-        <UserProvider>
-          <ProjectProvider>
-            <App /> 
-          </ProjectProvider>
-        </UserProvider>
-      </NavermapsProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <UserProvider>
+      <ProjectProvider>
+        <DndProvider backend={HTML5Backend}>
+          <App />
+        </DndProvider>
+      </ProjectProvider>
+    </UserProvider>
+  </BrowserRouter>
 );
 
 reportWebVitals();

@@ -1,11 +1,11 @@
 import './map.style.scss';
 import '../mainContent.style.scss'
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS_LIBRARIES } from './config'; // 상수 변수 가져오기
 import SearchResult from './searchResult.component';
 
-const Map = () =>{
+const Map = ({setActiveComponent}) =>{
   const containerStyle = {
     width: '100%',
     height: '100%'
@@ -17,12 +17,13 @@ const Map = () =>{
   };
  
   const searchBoxRef = useRef(null); 
+  const [result, setresult] = useState();
   const [center, setCenter] = useState({
     lat: 37.609980,
     lng: 127.075017
   })
 
-  const [result, setresult] = useState();
+  console.log(result);
 
   const  handlePlacesChange = () => {
     if(searchBoxRef.current && searchBoxRef.current.getPlaces()){
@@ -75,7 +76,7 @@ const Map = () =>{
           </StandaloneSearchBox>
         </GoogleMap>
       </LoadScript>
-      {result && <SearchResult result={result}/>}
+      {result && <SearchResult result={result} setActiveComponent={setActiveComponent}/>}
     </div>
   )
 }

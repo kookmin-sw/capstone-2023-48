@@ -3,11 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
 import './project-form.style.scss';
 import moment from "moment";
+import { UserContext } from '../../contexts/user.context'
 
 const ProjectForm = (props) => {
   const { project, setRefresh } = props;
   const navigate = useNavigate();
-  const {setCurrentProject} = useContext(ProjectContext);
+  const { setCurrentProject } = useContext(ProjectContext);
+  const { currentUser } = useContext(UserContext);
 
   const handleProjectClick = () => {
     setCurrentProject(project);
@@ -27,7 +29,7 @@ const ProjectForm = (props) => {
     //change refresh then update projectlist
     setRefresh();
   }
-
+  console.log(project);
   return(
     <div className="project-form-wrapper"
          // style={{backgroundImage: `url(${placeImgSrc}`}}
@@ -38,9 +40,13 @@ const ProjectForm = (props) => {
             <h2 className='project-title'>{project.title}</h2>
             <p className='project-places'>{project?.place || 'place'}</p>
           </div>
-          <button className='project-delete-btn' onClick={handleDeleteClick}>
-            삭제
-          </button>
+
+          {/* current유저가 owner인 프로젝트만 삭제버튼 활성화 */}
+          {currentUser.email === project.owner && 
+            <button className='project-delete-btn' onClick={handleDeleteClick}>
+              삭제
+            </button>
+          }
         </div>
         <div className='project-form-downside'>
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
