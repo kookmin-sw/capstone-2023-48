@@ -61,7 +61,7 @@ const Member = () =>{
   //searcId가 test라면 이메일이 test로 시작하는 모든 유저 출력 test1,test12,test993...
   useEffect(() => {
 
-    //구현 안되서 일단 막아 놓음 args는 유저에게 입력받은 값 (이메일)
+    //구현 안돼서 일단 막아 놓음 args는 유저에게 입력받은 값 (이메일)
   // useEffect(async() => {
     // await searchByEmail(searchId).then((response) => {
     // setSearchResult(response.data);

@@ -18,3 +18,7 @@ export async function addPlace(args){
   const response = await api.post(`/plan`, args);
   return response;
 }
+
+export async function deletePlace(args){
+  const response = await api.post(`/plan`)
+}
