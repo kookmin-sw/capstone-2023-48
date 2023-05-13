@@ -55,7 +55,6 @@ const test_place4 = {
 
 
 //currentProject의 테스트 데이터
-
 const testData = {
   ['day1_id']: {
     name: "day1",

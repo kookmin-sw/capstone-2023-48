@@ -40,7 +40,7 @@ const SearchResult = (props) =>{
 
   //추가버튼을 누르면 해당 장소를 현재 프로젝트의 places에 push
   const handleAddBtnClick = async () => {
-    setActiveComponent('detail');
+    // setActiveComponent('detail');
     await addPlace(
       currentProject._id, //현재 프로젝트 id
       result.name, //여행지 이름
