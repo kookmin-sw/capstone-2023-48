@@ -1,5 +1,4 @@
 import {React, useState, useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 import './sign-in-form.style.scss';
 import {loginUser} from "../../action/user-action";
 import { UserContext } from '../../contexts/user.context';
@@ -40,7 +39,7 @@ const SignInForm = () => {
       if (response.data.success === true){
         //success sign in -> move to projectList
         setCurrentUser(formFields);
-        setDisplayUserName(formFields.email.substring(0, email.indexOf("@")));
+        // setDisplayUserName(formFields.email.substring(0, email.indexOf("@")));
         navigate('/projectList')
       }
       else{
@@ -52,19 +51,19 @@ const SignInForm = () => {
   }
 
   return (
-    <form className='sign-in-form' onSubmit={handleSubmit}>
-      <h2>로그인 하세요!</h2>
-      <input placeholder="이메일" type="email" name="email" required onChange={handleChange} value={email}/>
-      <input placeholder="비밀번호" type="password" name="password" required onChange={handleChange} value={password}/>
-      <button className="custom-btn sign-in-btn">
-        <span>로그인</span>
-      </button>
-      <p>회원이 아니신가요? 
-        <Link className="sign-up-link" to='/sign-up'>
+    <div className='sign-in-form' >
+      <input className='sign-in-input' placeholder="email" type="email" name="email" required onChange={handleChange} value={email}/>
+      <input  className='sign-in-input' placeholder="password" type="password" name="password" required onChange={handleChange} value={password}/>
+      <div className='sign-in-btn-container'>
+        <button className="landing-btn sign-in-btn" onClick={handleSubmit}>
+          로그인
+        </button>
+        <div className='landing-btn-divider'></div>
+        <button className="landing-btn" to='/sign-up'>
           회원가입
-        </Link>
-      </p>
-    </form>
+        </button>
+      </div>
+    </div>
   );
 };
 

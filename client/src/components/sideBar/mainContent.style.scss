@@ -1,7 +1,11 @@
 .main-content-wrapper{
+  left: 80px;
+  height: 93vh;
   display: flex;
+  position:absolute;
   flex-direction: column;
   width: calc(100% - 470px);
   min-width: 1000px;
   background-color: #fff;
+  
 }

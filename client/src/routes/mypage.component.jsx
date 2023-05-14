@@ -6,7 +6,6 @@ import './mypage.style.scss';
 
 const Mypage = () => {
   const {currentUser} = useContext(UserContext); 
-  console.log(currentUser)
   return (
     <div className="mypage-wrapper">
       <UserInfo/>

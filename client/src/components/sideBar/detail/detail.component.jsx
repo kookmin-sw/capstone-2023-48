@@ -133,12 +133,12 @@ const onDragEnd = (result, columns, setColumns) => {
 }
 
 const Detail = (props) =>{
-  
+const {zIndex} = props;
 const [columns, setColumns] = useState(testData);
 console.log(columns);
 
   return (
-    <div className='detail-plan-wrapper' style={{ display: "flex", height: "100%" }}>
+    <div className='main-content-wrapper detail-plan-wrapper' style={{ display: "flex", zIndex }}>
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >

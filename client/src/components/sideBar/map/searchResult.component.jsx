@@ -20,10 +20,8 @@ const SearchResult = (props) =>{
   const minDate = currentProject.startAt;
   const maxDate = currentProject.endAt;
   
-  console.log(startAt)
-  console.log(endAt)
   //translate when next/prev button clicked
-
+  console.log(result.photos[1].getUrl());
   //currentSlide가 바뀌면 해당 slide로 translate
   useEffect(() => {
     if(slideRef.current){
