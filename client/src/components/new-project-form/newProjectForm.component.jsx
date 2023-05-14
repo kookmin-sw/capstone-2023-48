@@ -3,8 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import {useState, useContext} from "react";
 import { UserContext } from '../../contexts/user.context';
-import { ProjectContext } from '../../contexts/project.context';
-import { createNewProject } from "../../action/user-action";
+
 import {createProject} from "../../action/project-action";
 import {useCookies} from "react-cookie";
 

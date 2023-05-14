@@ -13,7 +13,6 @@ const ProjectForm = (props) => {
 
   const handleProjectClick = () => {
     setCurrentProject(project);
-    console.log('click project')
     navigate('/mainpage')
   }
 
@@ -29,20 +28,16 @@ const ProjectForm = (props) => {
     //change refresh then update projectlist
     setRefresh();
   }
-  console.log(project);
+
   return(
     <div className="project-form-wrapper"
-         // style={{backgroundImage: `url(${placeImgSrc}`}}
     >
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
-          <div className='project-title-place'>
-            <h2 className='project-title'>{project.title}</h2>
-            <p className='project-places'>{project?.place || 'place'}</p>
-          </div>
-
+          {console.log('project',project)}
+          <p className='project-place'>{project?.place || '서울특별시'}</p>
           {/* current유저가 owner인 프로젝트만 삭제버튼 활성화 */}
-          {currentUser.email === project.owner && 
+          {currentUser?.email === project.owner && 
             <button className='project-delete-btn' onClick={handleDeleteClick}>
               삭제
             </button>
@@ -51,9 +46,12 @@ const ProjectForm = (props) => {
         <div className='project-form-downside'>
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
-            <p className='project-member'>{project?.member || ''}</p>
+            <p className='project-member'>{project?.member || 'user1,user2'}</p>
           </div>
         </div>
+      </div>
+      <div className='project-title-container'>
+        <h2 className='project-title'>{project.title}</h2>
       </div>
     </div>
   )

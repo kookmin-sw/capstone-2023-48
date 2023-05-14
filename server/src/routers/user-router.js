@@ -18,7 +18,6 @@ userRouter.post('/', async (req, res) => {
 })
 
 userRouter.post('/sign_in', async (req_, res_) => {
-    console.log('!');
     try {
         const { id, password } = req_.body;
         const user = await userServices.getUserById(id);
@@ -31,7 +30,6 @@ userRouter.post('/sign_in', async (req_, res_) => {
         }
         const { token, result } = await user.generateToken();
         result.token = token;
-        console.log(result);
         res_
             .cookie('w_auth', token, {
                 expires: new Date('9999-12-31'),
