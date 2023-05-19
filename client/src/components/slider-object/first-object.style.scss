@@ -1,7 +1,7 @@
 .slider{
   width:100%;
   overflow-y: auto;
-  height:93vh;
+  height:279vh;
   z-index: 1;
 }
 
@@ -11,7 +11,7 @@
 
 .first-object{
   width: 100%;
-  height: 100%;
+  height: 93vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,9 +37,9 @@
   .sign-in-left{
     width: 50%;
     min-width: 900px;
-    height: 100%;
     background-color: #ffd0d5;
     padding: 30px;
+    padding-right: 0;
     padding-top: 200px;
  
     .introduction{
@@ -68,11 +68,12 @@
       width: 600px;
       height: 600px;
       transition: all ease 2s;
+      
     }
 
     .sign-in-earth:hover{
-      transform: rotate(-160deg);
-      margin-right: 700px;
+      transform: rotate(160deg);
+      margin-right: -700px;
     }
   }
 }

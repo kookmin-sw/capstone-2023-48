@@ -46,30 +46,6 @@ const SearchResult = (props) =>{
       result.geometry, //여행지 좌표
       result.photos, // 여행지 사진 Array (최대 length : 10)
       ).then((res) => {
-      
-      //res 프로젝트 업데이트 된 프로젝트 데이터 받기
-
-      //  project{
-      //   endAt : 
-      //   owner :
-      //   member : [user1,user2,user3...]
-      //   startAt :
-      //   title :
-      //   places : [place1,place2,place2...]
-      // }
-
-
-      //  place
-      // {
-      //   'project_id: 현재 프로젝트 _id값
-      //   'place_title':'여행지 이름'
-      //   'formatted_address':여행지 주소'
-      //   'geometry':'여행지 좌표'
-      //   'photos' : '여행지 사진 Array (최대 length : 10)'
-      //   'startAt' : '여행지 일정 시작시간'
-      //   'endAt' : '여행지 일정 죵료시간'
-      //    
-      // }
 
       //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
       setCurrentProject(res.data);
