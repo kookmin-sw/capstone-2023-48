@@ -3,15 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
 import './project-form.style.scss';
 import moment from "moment";
+import { UserContext } from '../../contexts/user.context'
 
 const ProjectForm = (props) => {
   const { project, setRefresh } = props;
   const navigate = useNavigate();
-  const {setCurrentProject} = useContext(ProjectContext);
+  const { setCurrentProject } = useContext(ProjectContext);
+  const { currentUser } = useContext(UserContext);
 
   const handleProjectClick = () => {
     setCurrentProject(project);
-    console.log('click project')
     navigate('/mainpage')
   }
 
@@ -30,24 +31,27 @@ const ProjectForm = (props) => {
 
   return(
     <div className="project-form-wrapper"
-         // style={{backgroundImage: `url(${placeImgSrc}`}}
     >
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
-          <div className='project-title-place'>
-            <h2 className='project-title'>{project.title}</h2>
-            <p className='project-places'>{project?.place || 'place'}</p>
-          </div>
-          <button className='project-delete-btn' onClick={handleDeleteClick}>
-            삭제
-          </button>
+          {console.log('project',project)}
+          <p className='project-place'>{project?.place || '서울특별시'}</p>
+          {/* current유저가 owner인 프로젝트만 삭제버튼 활성화 */}
+          {currentUser?.email === project.owner && 
+            <button className='project-delete-btn' onClick={handleDeleteClick}>
+              삭제
+            </button>
+          }
         </div>
         <div className='project-form-downside'>
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
-            <p className='project-member'>{project?.member || ''}</p>
+            <p className='project-member'>{project?.member || 'user1,user2'}</p>
           </div>
         </div>
+      </div>
+      <div className='project-title-container'>
+        <h2 className='project-title'>{project.title}</h2>
       </div>
     </div>
   )

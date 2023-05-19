@@ -5,7 +5,8 @@ import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/a
 import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS_LIBRARIES } from './config'; // 상수 변수 가져오기
 import SearchResult from './searchResult.component';
 
-const Map = ({setActiveComponent}) =>{
+const Map = (props) =>{
+  const {setActiveComponent, zIndex} = props;
   const containerStyle = {
     width: '100%',
     height: '100%'
@@ -23,6 +24,8 @@ const Map = ({setActiveComponent}) =>{
     lng: 127.075017
   })
 
+  console.log(result);
+
   const  handlePlacesChange = () => {
     if(searchBoxRef.current && searchBoxRef.current.getPlaces()){
       const places = searchBoxRef.current.getPlaces();
@@ -35,7 +38,8 @@ const Map = ({setActiveComponent}) =>{
   }
   
   return(
-    <div className='main-content-wrapper'>
+    <div className='main-content-wrapper' style={{zIndex}}>
+      
       <LoadScript
         googleMapsApiKey= {GOOGLE_MAPS_API_KEY}
         libraries={GOOGLE_MAPS_LIBRARIES}

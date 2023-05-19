@@ -3,8 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import {useState, useContext} from "react";
 import { UserContext } from '../../contexts/user.context';
-import { ProjectContext } from '../../contexts/project.context';
-import { createNewProject } from "../../action/user-action";
+
 import {createProject} from "../../action/project-action";
 import {useCookies} from "react-cookie";
 
@@ -43,6 +42,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
     //new-project-form style place in sign-in-form.style.scss , share style with sign-in/sign-up
     <div className='new-project-form-wrapper'>
       <div className='new-project-form'>
+        
         <button className='exit-btn' onClick={onClose}>X</button>
         <label>
           프로젝트 제목
@@ -56,7 +56,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
             onChange={(date) => setStartDate(date)}
             dateFormat="yyyy-MM-dd"
             selectsStart
-            readOnly={true}
+            readOnly={false}
             />
           <label htmlFor="end-date">종료일</label>
           <DatePicker
@@ -65,7 +65,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
             onChange={(date) => setEndDate(date)}
             dateFormat="yyyy-MM-dd"
             endDate
-            readOnly={true}
+            readOnly={false}
           />
         </div>
         <button type="button" className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>

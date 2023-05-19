@@ -12,12 +12,13 @@ const MainPage = () => {
   const handleActiveComponentChange = (component) => {
     setActiveComponent(component);
   }
+  console.log(activeComponent);
   return(
     <div className='main-page-wrapper'>
       <SideBar handleActiveComponentChange={handleActiveComponentChange}/>      
-      {activeComponent === 'home' && <Map setActiveComponent={setActiveComponent}/>}
-      {activeComponent === 'detail' && <Detail/>}
-      {activeComponent === 'member' && <Member/>}
+      <Map setActiveComponent={setActiveComponent} zIndex={activeComponent === 'home' ? 1 : 0 }/>
+      <Detail zIndex={activeComponent === 'detail' ? 1 : 0 }/>
+      <Member zIndex={activeComponent === 'member' ? 1 : 0 }/>
       <ChattingForm/>
     </div>
   )

@@ -2,18 +2,27 @@ import './searchResult.style.scss';
 import { addPlace } from '../../../action/plan-action';
 import { ProjectContext } from '../../../contexts/project.context';
 import { useContext, useState, useRef, useEffect } from 'react';
+import TimePicker from 'react-time-picker';
+import DatePicker from "react-datepicker";
 
 const SearchResult = (props) =>{
+
   
   const { result, setActiveComponent } = props;
   console.log(result);
   const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [ placeDate, setPlaceDate ] = useState(new Date());
+  const [ startAt, setStartAt ] = useState('10:00');
+  const [ endAt, setEndAt ] = useState('10:00');
   const slideRef = useRef(null);
   const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
+  const minDate = currentProject.startAt;
+  const maxDate = currentProject.endAt;
+  
   //translate when next/prev button clicked
-
+  console.log(result.photos[1].getUrl());
   //currentSlide가 바뀌면 해당 slide로 translate
   useEffect(() => {
     if(slideRef.current){
@@ -30,7 +39,7 @@ const SearchResult = (props) =>{
 
   //추가버튼을 누르면 해당 장소를 현재 프로젝트의 places에 push
   const handleAddBtnClick = async () => {
-    setActiveComponent('detail');
+    // setActiveComponent('detail');
     await addPlace(
       currentProject._id, //현재 프로젝트 id
       result.name, //여행지 이름
@@ -60,6 +69,7 @@ const SearchResult = (props) =>{
       //   'photos' : '여행지 사진 Array (최대 length : 10)'
       //   'startAt' : '여행지 일정 시작시간'
       //   'endAt' : '여행지 일정 죵료시간'
+      //    
       // }
 
       //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
@@ -145,6 +155,29 @@ const SearchResult = (props) =>{
           <div className='result-name'>{result.name}</div>
           <div className='result-address'>{result.formatted_address}</div>
           <div className='result-rating'>{result.rating} {result.user_ratings_total}</div>
+        </div>
+        <div className='react-time-picker-wrapper'>
+          <DatePicker
+            selected={placeDate}
+            onChange={date => setPlaceDate(date)}
+            minDate={minDate}
+            maxDate={maxDate}
+          />
+          <label>시작시간</label>
+          <TimePicker className='react-time-picker' 
+            onChange={setStartAt} 
+            value={startAt}
+            clockIcon={null}
+            clearIcon={null}
+            />
+          <label>종료시간</label>
+          <TimePicker className='react-time-picker' 
+            onChange={setEndAt} 
+            value={endAt}
+            clockIcon={null}
+            clearIcon={null}
+          />
+          
         </div>
         <div className='result-add-btn-wrapper'>
           <button className='result-add-btn' onClick={handleAddBtnClick}>추가</button>

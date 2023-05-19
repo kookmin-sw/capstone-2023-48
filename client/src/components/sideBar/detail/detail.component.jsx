@@ -1,14 +1,11 @@
 import '../mainContent.style.scss';
 import './detail.style.scss';
-import update from 'immutability-helper'
-import { updatePlaces } from '../../../action/project-action';
-import { useContext } from 'react';
-import { ProjectContext } from '../../../contexts/project.context';
-import { useCallback, useState } from 'react'
-import PlaceCard from './placeCard';
+import { useState } from 'react'
+import { DragDropContext, Draggable , Droppable } from 'react-beautiful-dnd';
 
 //place의 테스트 데이터
 const test_place1 = {
+  'city':'서울특별시',
   'id':'1',
   'project_id':'currentProject._id',
   'place_title':'여행지 이름',
@@ -17,9 +14,10 @@ const test_place1 = {
   'photos' : '여행지 사진 Array (최대 length : 10)',
   'startAt' : '여행지 일정 시작시간',
   'endAt' : '여행지 일정 죵료시간',
-  'index' : '일정 index'
+  'date' : '2023-05-12',
 }
 const test_place2 = {
+  'city':'서울특별시',
   'id':'2',
   'project_id':'currentProject._id',
   'place_title':'여행지 이름',
@@ -28,9 +26,10 @@ const test_place2 = {
   'photos' : '여행지 사진 Array (최대 length : 10)',
   'startAt' : '여행지 일정 시작시간',
   'endAt' : '여행지 일정 죵료시간',
-  'index' : '일정 index'
+  'date' : '2023-05-12',
 }
 const test_place3 = {
+  'city':'서울특별시',
   'id':'3',
   'project_id':'currentProject._id',
   'place_title':'여행지 이름',
@@ -39,9 +38,10 @@ const test_place3 = {
   'thumbnail' : '여행지 사진 photos[0]',
   'startAt' : '여행지 일정 시작시간',
   'endAt' : '여행지 일정 죵료시간',
-  'index' : '일정 index'
+  'date' : '2023-05-12',
 }
 const test_place4 = {
+  'city':'서울특별시',
   'id':'4',
   'project_id':'currentProject._id',
   'place_title':'여행지 이름',
@@ -72,87 +72,158 @@ const test_place6 = {
   'thumbnail' : '여행지 사진 photos[0]',
   'startAt' : '여행지 일정 시작시간',
   'endAt' : '여행지 일정 죵료시간',
-  'index' : '일정 index'
+  'index' : '일정 index',
+  'date' : '2023-05-13',
 }
+
 
 //currentProject의 테스트 데이터
-const currentProject = {
-        _id : '',
-        endAt : '',
-        owner : '',
-        member : ['use1','user2','user3'],
-        startAt : '',
-        title : 'test_project_data',
-        places : [test_place1,test_place2,test_place3,test_place4,test_place5,test_place6],
-}
+const testData = {
+  ['day1_id']: {
+    name: "day1",
+    date:'2023-05-14',
+    items: [
+      test_place1,test_place2,test_place3,test_place4
+    ],
+  },
+  ['day2_id']: {
+    name: "day2",
+    date:'2023-05-15',
+    items: []
+  },
+  ['day3_id']: {
+    name: "day3",
+    date:'2023-05-16',
+    items: []
+  },
+  ['day4_id']: {
+    name: "day4",
+    date:'2023-05-17',
+    items: []
+  },
+  ['day5_id']: {
+    name: "day5",
+    date:'2023-05-18',
+    items: []
+  },
+  ['day6_id']: {
+    name: "day5",
+    date:'2023-05-18',
+    items: []
+  },
+  ['day7_id']: {
+    name: "day5",
+    date:'2023-05-18',
+    items: []
+  },
+};
 
+const onDragEnd = (result, columns, setColumns) => {
+  if (!result.destination) return;
+  const { source, destination } = result;
+
+  if (source.droppableId !== destination.droppableId) {
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
+    const sourceItems = [...sourceColumn.items];
+    const destItems = [...destColumn.items];
+    const [removed] = sourceItems.splice(source.index, 1);
+    destItems.splice(destination.index, 0, removed);
+    setColumns({
+      ...columns,
+      [source.droppableId]: {
+        ...sourceColumn,
+        items: sourceItems
+      },
+      [destination.droppableId]: {
+        ...destColumn,
+        items: destItems
+      }
+    });
+  } else {
+    const column = columns[source.droppableId];
+    const copiedItems = [...column.items];
+    const [removed] = copiedItems.splice(source.index, 1);
+    copiedItems.splice(destination.index, 0, removed);
+    setColumns({
+      ...columns,
+      [source.droppableId]: {
+        ...column,
+        items: copiedItems
+      }
+    });
+  }
+}
 
 const Detail = (props) =>{
+const {zIndex} = props;
+const [columns, setColumns] = useState(testData);
+console.log(columns);
 
-  // const { currentProject } = useContext(ProjectContext); <= 실제 사용할 코드
-  const { setCurrentProject,projectList,setProjectList } = useContext(ProjectContext);
-  const [places, setPlaces] = useState(currentProject.places); //초기값 테스트 데이터 넣음
-  
-
-  //일정 순서가 바뀌면 프로젝트 데이터를 update
-  useState(async()=>{
-    await updatePlaces(currentProject._id,places).then((res) => {
-      //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
-      setCurrentProject(res.data);
-
-      //프로젝트 리스트 복사
-      const updatedProjectList = [...projectList];
-      
-      //업데이트할 프로젝트 인덱스 찾기
-      const projectIndex = updatedProjectList.findIndex(
-        (project) => project._id === currentProject._id
-      );
-      if (projectIndex !== -1) {
-        // 프로젝트 업데이트
-        updatedProjectList[projectIndex] = {currentProject};
-        // projectList 컨텍스트 업데이트
-        setProjectList(updatedProjectList);
-      }
-    })
-  },[places]);
-
-  //카드를 다른 위치에 drag drop했을때
-  //places state가 변경됨.
-  const moveCard = useCallback((dragIndex, hoverIndex) => {
-    setPlaces((prevCards) =>
-        update(prevCards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, prevCards[dragIndex]],
-          ],
-        }),
-      )
-    }, [])
-
-  const renderCard = useCallback((place, index) => {
-    return (
-      <PlaceCard
-        key={place.id}
-        index={index}
-        id={place.id}
-        text={place.place_title}
-        thumbnail={place.thumbnail}
-        city={place.city}
-        moveCard={moveCard}
-      />
-    )
-  }, [])
-
-  return(
-    <div className='main-content-wrapper'>
-      <div className='detail-plan-wrapper'>
-        <div className='detail-plan-column'>
-          {places.map((place,index) => (    
-            renderCard(place,index)
-            ))}
-        </div>
-      </div>
+  return (
+    <div className='main-content-wrapper detail-plan-wrapper' style={{ display: "flex", zIndex }}>
+      <DragDropContext
+        onDragEnd={result => onDragEnd(result, columns, setColumns)}
+      >
+        {Object.entries(columns).map(([columnId, column], index) => {
+          return (
+            <div className='detail-plan-column-container' key={columnId}>
+              <h2>{column.name}</h2>
+              <div style={{ margin: 8 }}>
+                <Droppable droppableId={columnId} key={columnId}>
+                  {(provided, snapshot) => {
+                    return (
+                      <div className='detail-plan-column'
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                        style={{
+                          background: snapshot.isDraggingOver
+                            ? "lightblue"
+                            : "lightgrey",
+                        }}
+                      >
+                        {column.items.map((item, index) => {
+                          return (
+                            <Draggable
+                              key={item.id}
+                              draggableId={item.id}
+                              index={index}
+                            >
+                              {(provided, snapshot) => {
+                                return (
+                                  <div
+                                    className='detail-plan-column-item'
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    style={{
+                                      userSelect: "none",
+                                      backgroundColor: snapshot.isDragging
+                                        ? "#263B4A"
+                                        : "#456C86",
+                                      color: "white",
+                                      ...provided.draggableProps.style
+                                    }}
+                                  >
+                                    <div>{item.place_title}{item.id}</div>
+                                    <div>{item.startAt}~{item.endAt}</div>
+                                  </div>
+                                );
+                              }}
+                            </Draggable>
+                          );
+                        })}
+                        {provided.placeholder}
+                      </div>
+                    );
+                  }}
+                </Droppable>
+              </div>
+            </div>
+          );
+        })}
+      </DragDropContext>
     </div>
-  )
-}
+  );
+};
 export default Detail;

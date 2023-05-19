@@ -1,14 +1,24 @@
 .detail-plan-wrapper{
-  display: flex;
-  justify-content: center;
-  overflow-y: scroll;
-  height: 100%;
+  flex-direction: row;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  .detail-plan-column-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-}
+    .detail-plan-column{
+      padding: 4px;
+      width: 250px;
+      min-height: 500px;
 
-.detail-plan-column{
-
-  border: 5px solid black;
-  width: fit-content;
-  height: fit-content;
+      .detail-plan-column-item{
+        padding: 16px;
+        margin: 0 0 8px 0;
+        min-height: 50px;
+      }
+    }
+  }
 }

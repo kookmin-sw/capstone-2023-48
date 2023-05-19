@@ -32,7 +32,7 @@ const Navigation = () => {
         }
         {
           currentUser ? 
-            <span>{displayUserName}</span>
+            <span className='nav-link'>{displayUserName}</span>
            : null
         }
       </div>

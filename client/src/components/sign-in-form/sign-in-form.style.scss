@@ -1,33 +1,37 @@
 .sign-in-form, .sign-up-form {
   width: 350px;
-  // border: 3px solid #40513B;
   position: relative;
   z-index: 1;
   padding-bottom: 30px;
   padding-top: 30px;
-  text-align: center;
-  // background-color: #EDF1D6;
+  font-family: "LINESeedKR-Rg";
+  
+  .sign-in-input{
+    appearance: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    border: none;
+    background-color: #ffd0d5;
+    width: 420px;
+    height: 2em;
+    line-height: 2em;
+    border-bottom: 2px solid #171313;
+    font-size: 28px;
+    margin-top: 6px;
+  }
+
+  .sign-in-btn-container{
+    display: flex;
+    justify-content: center;
+    width: 420px;
+    padding: auto;
+    margin-top: 25px;
+  }
 
   h2{
-    color:black;
-  }
-
-  input{
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background-color: #ffdb251a;
-    width: 315px;
-    border: 0;
-    margin: 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 18px;
-    box-shadow: 0 0 0 3px black inset;
-  }
-  
-  .sign-up-link{
-    text-decoration: none;
-    color: black
+    font-size: 30px;
+    color:#171313;
   }
 
   p{
@@ -35,14 +39,13 @@
   }
 }
 
-.custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
+.landing-btn{
+  width: 210px;
+  height: 50px;
+  line-height: 50px;
   border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
   font-weight: 500;
+  font-size: 20px;
   color: black;
   background: transparent;
   cursor: pointer;
@@ -50,6 +53,12 @@
   position: relative;
   display: inline-block;
   outline: none;
-  margin: 20px;
 }
 
+.landing-btn:hover{
+  background-color: aliceblue;
+}
+
+.landing-btn-divider{
+  width: 5px;
+}
