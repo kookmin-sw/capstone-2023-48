@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect} from 'react';
-import './sign-in-form.style.scss';
+import React, { useState, useContext} from 'react';
+import './sign-in-form.style.css';
 import {loginUser} from "../../action/user-action";
 import { UserContext } from '../../contexts/user.context';
 import { useNavigate } from 'react-router-dom';

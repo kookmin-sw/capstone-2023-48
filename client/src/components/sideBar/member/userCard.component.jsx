@@ -1,4 +1,4 @@
-import './userCard.style.scss';
+import './userCard.style.css';
 import { ProjectContext } from '../../../contexts/project.context';
 import React, { useContext } from 'react';
 import { addMemberToProject } from '../../../action/project-action';

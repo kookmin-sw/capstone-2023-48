@@ -1,5 +1,5 @@
 import React from 'react';
-import './chatting-form.style.scss';
+import './chatting-form.style.css';
 
 const ChattingForm = () => {
   return(

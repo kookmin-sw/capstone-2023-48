@@ -3,7 +3,7 @@ import UserProfileForm from "../components/user-profile-form/user-profile-form.c
 import UserInfo from "../components/user-info/user-Info.component";
 import {UserContext} from "../contexts/user.context";
 import {useContext} from "react";
-import './mypage.style.scss';
+import './mypage.style.css';
 
 const Mypage = () => {
     const {currentUser} = useContext(UserContext);

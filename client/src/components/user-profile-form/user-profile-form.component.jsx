@@ -1,5 +1,5 @@
 import React from 'react';
-import './user-profile-form.style.scss';
+import './user-profile-form.style.css';
 
 const UserProfileForm = () => {
 

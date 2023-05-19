@@ -1,4 +1,4 @@
-import './project-list.style.scss';
+import './project-list.style.css';
 import ProjectForm from '../components/project-form/project-form.component';
 import NewProjectForm from '../components/new-project-form/newProjectForm.component';
 import {useContext, useEffect, useState} from 'react';

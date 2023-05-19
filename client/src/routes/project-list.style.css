@@ -6,12 +6,10 @@
   background-color: #ffd0d5;
   align-items: center;
   flex-direction: column;
-
-  .project-display-name{
-    // position: absolute;
-    // top:190px;
-    font-size: 130px;  
-  }
+}
+.project-display-name{
+  font-size: 130px;  
+}
   
   .project-slider{
     display:flex;
@@ -22,7 +20,7 @@
     overflow-y: hidden;
     align-items: center;
     margin: 40px 100px 40px 100px;
-
+  }
 
     .new-project-btn{
       text-align: center;
@@ -38,20 +36,18 @@
       background-color: #fff8f9;
     }
 
-    &::-webkit-scrollbar {
+    ::-webkit-scrollbar {
       height: 10px;
       border-radius: 1rem;
     }
     
-    &::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
       border-radius: 1rem;
       background: black;
     }
     
-    &::-webkit-scrollbar-track {
+    ::-webkit-scrollbar-track {
       border-radius: 1rem;
       background: #ffd0d5;
     }
-  }
 
-}

@@ -7,7 +7,7 @@ import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
 import {getUser} from "../action/user-action";
 import {UserContext} from "../contexts/user.context";
-import './landing.style.scss';
+import './landing.style.css';
 
 const Landing = () => {
   const [cookies, setCookies] = useCookies();

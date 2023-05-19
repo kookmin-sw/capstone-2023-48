@@ -17,11 +17,11 @@
   align-items: center;
   background-color: #ffd0d5;
   justify-content: center;
+}
   
   .scroll{
     margin-bottom: 20px;
   }
-}
 
 .sign-in-wrapper{
   display: flex;
@@ -33,7 +33,7 @@
   border-radius: 35px;
   justify-content:space-between;
   padding-left: 170px;
-
+}
   .sign-in-left{
     width: 50%;
     min-width: 900px;
@@ -41,7 +41,7 @@
     padding: 30px;
     padding-right: 0;
     padding-top: 200px;
- 
+  }
     .introduction{
       height: fit-content;
       margin: 0;
@@ -49,7 +49,7 @@
       font-size: 100px;
       color: #171313;
     }
-  }
+  
 
   .sign-in-right{
     width: 50%;
@@ -60,7 +60,7 @@
     align-items: center;
     flex-direction: column;   
     background-color: #ffd0d5; 
-
+  }
     .sign-in-earth{
       background-image: url('../../assets/images/earth.png');
       background-repeat: no-repeat;
@@ -75,8 +75,6 @@
       transform: rotate(160deg);
       margin-right: -700px;
     }
-  }
-}
 
 .divder{
   width: 100%;

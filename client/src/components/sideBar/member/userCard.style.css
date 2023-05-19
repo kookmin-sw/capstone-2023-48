@@ -8,6 +8,7 @@
   border: 1px solid black;
   padding: 20px;
   margin-bottom: 10px;
+}
 
   .user-card-invite-btn{
     width: 60px;
@@ -15,4 +16,3 @@
     cursor: pointer;
     font-size: 16px;
   }
-}

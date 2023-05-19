@@ -8,7 +8,7 @@
   z-index: 3;
   background-color: #fff2f3;
   margin-right: calc(100% - 480px);
-  
+}
   .side-bar-list{
     display: flex;
     flex-direction: column;
@@ -20,4 +20,3 @@
     align-items: center;
     margin: 10px 0 10px 0;
   }
-}

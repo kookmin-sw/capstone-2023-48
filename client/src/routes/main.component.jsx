@@ -1,4 +1,4 @@
-import './main.style.scss';
+import './main.style.css';
 import ChattingForm from '../components/chatting/chatting-form.component';
 import Map from '../components/sideBar/map/map.component';
 import Detail from '../components/sideBar/detail/detail.component';

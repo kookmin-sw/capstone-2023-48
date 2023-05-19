@@ -1,4 +1,4 @@
-import './searchResult.style.scss';
+import './searchResult.style.css';
 import { addPlace } from '../../../action/plan-action';
 import { ProjectContext } from '../../../contexts/project.context';
 import React, { useContext, useState, useRef, useEffect } from 'react';

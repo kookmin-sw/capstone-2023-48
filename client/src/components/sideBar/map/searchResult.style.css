@@ -7,7 +7,7 @@
   width: 100%;
   min-width: 1000px;
   bottom: 0;
-
+}
   .result-img-list-close-btn{
     position: absolute;
     left: calc(100% - 30px);
@@ -60,7 +60,7 @@
     overflow: hidden;
     transform: translateX();
     transition: all ease 1s;
-    
+  }   
     .result-img-list-item{
       margin: 0 100px 0 100px;
       width: 400px;
@@ -69,7 +69,7 @@
       background-size: cover;
       z-index: 1;
     }
-  }
+  
 
   .result-container{
   display: flex;
@@ -77,16 +77,15 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-
+  }
     .result-img-wrapper{
       display: flex;
       align-items: center;
       justify-content: center;
       height: 200px;
       width: 200px;
-      // border: 1px solid red;
       cursor: pointer;
-
+    }
       .result-img{
         width: 180px;
         max-width: 180px;
@@ -94,13 +93,12 @@
         background-size: cover;
         color:white;
       }
-    }
+    
 
     .result-name-address-rating-wrapper{
       height: 100%;
       width: 65%;
-      // border: 1px solid blue;
-
+    }
       .result-name{
         font-size: 28px;
         margin: 10px;
@@ -115,23 +113,20 @@
         font-size: 15px;
         margin: 10px;
       }
-    }
+    
     
     .result-add-btn-wrapper{
       height: 100%;
       width: 15%;
-      // border: 1px solid black;
       display: flex;
       justify-content: center;
       align-items: center;
-
+    }
       .result-add-btn{
         width: 70px;
         height: 70px;
       }
-    }
-  }
-}
+    
 .react-time-picker-wrapper{
   width:150px;
   display: flex;

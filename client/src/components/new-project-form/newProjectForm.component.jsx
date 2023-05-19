@@ -1,4 +1,4 @@
-import './newProjectForm.style.scss';
+import './newProjectForm.style.css';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import React, {useState, useContext} from "react";
