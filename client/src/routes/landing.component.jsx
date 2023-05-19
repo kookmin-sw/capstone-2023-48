@@ -1,10 +1,13 @@
 import React, {useContext} from 'react';
 import FirstObject from '../components/slider-object/first-object-component'
+import SecondObject from '../components/slider-object/second-object.component';
+import ThirdObject from '../components/slider-object/third-object';
 import { useEffect, useRef } from "react";
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
 import {getUser} from "../action/user-action";
 import {UserContext} from "../contexts/user.context";
+import './landing.style.scss';
 
 const Landing = () => {
   const [cookies, setCookies] = useCookies();
@@ -37,14 +40,18 @@ const Landing = () => {
       if(deltaY > 0){
         //scroll down in first page
         if(scrollTop >= 0 && scrollTop < pageHeight) {
+          console.log(pageHeight, scrollTop)
+          console.log(sliderDivRef.current)
+          sliderDivRef.current.style.transform = `translateY(-${window.deltaY}px)`;
           sliderDivRef.current.scrollTo({
-            top: pageHeight,
-            left: 0,
-            behavior: "smooth",
-          });
-        }
-        //scroll down in second page 
-        else if(scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
+              top: pageHeight,
+              left: 0,
+              behavior: "smooth",
+            });
+          }
+          //scroll down in second page 
+          else if(scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
+            
           sliderDivRef.current.scrollTo({
             top: pageHeight * 2,
             left: 0,
@@ -97,8 +104,8 @@ const Landing = () => {
   return (
     <div ref={sliderDivRef} className="slider">
       <FirstObject/>
-      <FirstObject/>
-      <FirstObject/>
+      <SecondObject/>
+      <ThirdObject/>
     </div>
   );
 };

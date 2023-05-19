@@ -1,6 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useContext } from 'react';
-import Logo from '../../assets/images/navigation_logo.png';
 import { UserContext } from '../../contexts/user.context';
 import './navigation.style.scss';
 

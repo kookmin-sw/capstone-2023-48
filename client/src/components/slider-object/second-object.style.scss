@@ -1,0 +1,41 @@
+.second-object{
+  width: 100%;
+  height: 93vh;
+  display: flex;
+  background-color: #fff5f6;
+
+  .intro-card-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .intro-card:hover{
+      filter: brightness(70%);
+    }
+
+    .intro-card{
+      width: 450px;
+      height: 450px;
+      background-color: white;
+      margin: 50px;
+      transition: all 0.2s ease-in-out;
+      .intro-card-img{
+        height: 70%;
+      }
+      .card-subject{
+        height: 30%;
+      }
+      
+      h1{
+        margin: 10px;
+        font-size: 32px;
+      }
+      p{
+        margin: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
