@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
-import './project-form.style.scss';
+import './project-form.style.css';
 import moment from "moment";
 import { UserContext } from '../../contexts/user.context'
 

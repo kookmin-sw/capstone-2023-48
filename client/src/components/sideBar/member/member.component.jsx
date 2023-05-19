@@ -1,5 +1,5 @@
-import '../mainContent.style.scss';
-import './member.style.scss';
+import '../mainContent.style.css';
+import './member.style.css';
 import UserCard from './userCard.component';
 import React, { useState, useEffect } from 'react';
 import { searchByEmail } from '../../../action/search-action';

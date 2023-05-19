@@ -1,5 +1,5 @@
 import React from 'react';
-import './second-object.style.scss';
+import './second-object.style.css';
 
 const SecondObject = () => {
   return(

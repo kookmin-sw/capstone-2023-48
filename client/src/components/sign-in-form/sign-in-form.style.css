@@ -5,7 +5,7 @@
   padding-bottom: 30px;
   padding-top: 30px;
   font-family: "LINESeedKR-Rg";
-  
+}
   .sign-in-input{
     appearance: none;
     outline: none;
@@ -37,7 +37,7 @@
   p{
     color: black;
   }
-}
+
 
 .landing-btn{
   width: 210px;

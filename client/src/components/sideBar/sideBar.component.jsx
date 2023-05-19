@@ -1,5 +1,5 @@
 import React from 'react';
-import './sideBar.style.scss';
+import './sideBar.style.css';
 import { ReactComponent as MainLogo} from '../../assets/logos/plane.logo.svg';
 import { ReactComponent as CalendarLogo} from '../../assets/logos/calendar.logo.svg';
 import { ReactComponent as MemberLogo} from '../../assets/logos/member.logo.svg';

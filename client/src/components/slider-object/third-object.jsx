@@ -1,5 +1,5 @@
 import React from 'react';
-import './third-object.style.scss';
+import './third-object.style.css';
 
 const ThirdObject = () => {
   return(

@@ -1,7 +1,7 @@
 .project-form-wrapper{
   margin: 0 15px 0 15px;
   scroll-snap-align: start;
-  
+}
   .project-form-link:hover{
     filter: brightness(50%);
     transition:all 0.2s ease;
@@ -17,13 +17,13 @@
     background-image: url('../../assets/images/train_railway_forest.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    
+  }   
     .project-form-upside{
       border-radius: 32px 32px 0 0;
       padding: 10px;
       align-items: center;
       height: 50%;
-
+    }
       .project-place{
         margin: 7px;
         font-size: 38px;
@@ -38,7 +38,7 @@
         height: 30px;
         margin-bottom: 40px;
       }
-    }
+    
     .project-form-downside{
       height: 50%;
       color: rgb(245, 245, 245);
@@ -47,21 +47,18 @@
       align-items: end;
       justify-content: space-between;
       display: flex;
-
+    }
       .project-form-member{
         display: flex;
       }
-    }
-  }
+    
+  
   .project-title-container{
 
     height: fit-content;
-
+  }
     .project-title{
       margin: 10px 0 15px 5px;
       font-size: 32px;
       padding-left: 5px;
     }
-  }
-
-}

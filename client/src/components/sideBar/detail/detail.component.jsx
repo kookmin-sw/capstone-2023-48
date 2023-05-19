@@ -1,7 +1,8 @@
-import '../mainContent.style.scss';
-import './detail.style.scss';
-import React, { useState } from 'react'
+import '../mainContent.style.css';
+import './detail.style.css';
+import React, { useState, useContext } from 'react'
 import { DragDropContext, Draggable , Droppable } from 'react-beautiful-dnd';
+import { ProjectContext } from '../../../contexts/project.context';
 
 //place의 테스트 데이터
 const test_place1 = {
@@ -155,10 +156,13 @@ const onDragEnd = (result, columns, setColumns) => {
   }
 }
 
+
 const Detail = (props) =>{
 const {zIndex} = props;
+
+const {currentProject} = useContext(ProjectContext);
+console.log(currentProject);
 const [columns, setColumns] = useState(testData);
-console.log(columns);
 
   return (
     <div className='main-content-wrapper detail-plan-wrapper' style={{ display: "flex", zIndex }}>
