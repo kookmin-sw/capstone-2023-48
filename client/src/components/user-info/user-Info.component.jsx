@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import './user-info.style.scss';
+import React from 'react';
 
 const UserInfo = () => {
 

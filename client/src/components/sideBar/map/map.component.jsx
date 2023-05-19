@@ -1,6 +1,6 @@
 import './map.style.scss';
 import '../mainContent.style.scss'
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS_LIBRARIES } from './config'; // 상수 변수 가져오기
 import SearchResult from './searchResult.component';

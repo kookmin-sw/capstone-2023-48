@@ -1,7 +1,7 @@
 import './searchResult.style.scss';
 import { addPlace } from '../../../action/plan-action';
 import { ProjectContext } from '../../../contexts/project.context';
-import { useContext, useState, useRef, useEffect } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import TimePicker from 'react-time-picker';
 import DatePicker from "react-datepicker";
 

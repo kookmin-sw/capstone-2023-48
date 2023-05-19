@@ -1,3 +1,4 @@
+import React from 'react';
 import './second-object.style.scss';
 
 const SecondObject = () => {

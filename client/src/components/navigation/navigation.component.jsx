@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/user.context';

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import React from 'react';
 // import './sign-un-Button.style.scss'
 
 const SignUpButton = (props) => {

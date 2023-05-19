@@ -1,6 +1,6 @@
 import '../mainContent.style.scss';
 import './detail.style.scss';
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { DragDropContext, Draggable , Droppable } from 'react-beautiful-dnd';
 
 //place의 테스트 데이터

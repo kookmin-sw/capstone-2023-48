@@ -1,3 +1,4 @@
+import React from 'react';
 import './user-profile-form.style.scss';
 
 const UserProfileForm = () => {

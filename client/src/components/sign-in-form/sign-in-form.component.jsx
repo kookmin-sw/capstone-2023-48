@@ -1,4 +1,4 @@
-import {React, useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import './sign-in-form.style.scss';
 import {loginUser} from "../../action/user-action";
 import { UserContext } from '../../contexts/user.context';

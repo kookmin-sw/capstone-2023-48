@@ -1,7 +1,7 @@
 import '../mainContent.style.scss';
 import './member.style.scss';
 import UserCard from './userCard.component';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { searchByEmail } from '../../../action/search-action';
 
 //검색 결과 테스트 데이터

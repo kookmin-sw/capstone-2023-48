@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Landing from "./routes/landing.component";
 import SignUp from "./routes/sign-up.component";

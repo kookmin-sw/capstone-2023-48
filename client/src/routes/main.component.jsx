@@ -4,8 +4,7 @@ import Map from '../components/sideBar/map/map.component';
 import Detail from '../components/sideBar/detail/detail.component';
 import Member from '../components/sideBar/member/member.component';
 import SideBar from '../components/sideBar/sideBar.component';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState('home');
   

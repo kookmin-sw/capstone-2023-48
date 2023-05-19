@@ -1,6 +1,6 @@
 import './userCard.style.scss';
 import { ProjectContext } from '../../../contexts/project.context';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { addMemberToProject } from '../../../action/project-action';
 
 const UserCard = (props) => {

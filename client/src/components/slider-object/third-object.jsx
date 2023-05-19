@@ -1,3 +1,4 @@
+import React from 'react';
 import './third-object.style.scss';
 
 const ThirdObject = () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import SignUpForm from '../components/sign-up-form/sign-up-form';
 import './sign-up.style.scss';
 

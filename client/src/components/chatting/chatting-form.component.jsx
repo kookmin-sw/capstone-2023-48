@@ -1,3 +1,4 @@
+import React from 'react';
 import './chatting-form.style.scss';
 
 const ChattingForm = () => {
