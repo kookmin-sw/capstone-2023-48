@@ -43,27 +43,13 @@ const ProjectForm = (props) => {
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
-    
-    //delete projecct from ProjectList
-    {
-
-      
-    }
 
     //change refresh then update projectlist
     setRefresh();
   }
 
-
-  // {project?.member.map((userId) => {
-  //   getUser(userId).then((response) => {
-  //     setMemberList([...memberList,response.data.id.slice(0,response.data.id.indexOf('@'))])
-  //   })
-  // })}
-
   return(
-    <div className="project-form-wrapper"
-    >
+    <div className="project-form-wrapper">
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
           <p className='project-place'>{project?.place || '서울특별시'}</p>
@@ -88,5 +74,9 @@ const ProjectForm = (props) => {
     </div>
   )
 }
-
 export default ProjectForm;
+
+
+
+
+
