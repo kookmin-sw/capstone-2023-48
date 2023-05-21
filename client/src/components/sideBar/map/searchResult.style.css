@@ -129,13 +129,12 @@
     
 .react-time-picker-wrapper{
   width:150px;
+  height: 100%;
   display: flex;
   flex-direction: column  ;
 }
 
 .react-time-picker {
-  display: inline-flex;
-  position: relative;
 }
 
 .react-time-picker__wrapper {

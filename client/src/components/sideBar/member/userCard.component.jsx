@@ -38,7 +38,9 @@ const UserCard = (props) => {
         <div className='user-card-name'>{user.name}</div>
         <div className='user-card-email'>{user.email}</div>
       </div>
-      <button className='user-card-invite-btn' onClick={handleInvite}>초대</button>
+      {!currentProject.member.includes(user._id) && 
+        <button className='user-card-invite-btn' onClick={handleInvite}>초대</button>
+      }
     </div>
   )
 }

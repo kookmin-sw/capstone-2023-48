@@ -2,7 +2,6 @@ import './searchResult.style.css';
 import { addPlace } from '../../../action/plan-action';
 import { ProjectContext } from '../../../contexts/project.context';
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import TimePicker from 'react-time-picker';
 import DatePicker from "react-datepicker";
 
 const SearchResult = (props) =>{
@@ -21,8 +20,6 @@ const SearchResult = (props) =>{
   const minDate = currentProject.startAt;
   const maxDate = currentProject.endAt;
   
-  //translate when next/prev button clicked
-  console.log(result.photos[1].getUrl());
   //currentSlide가 바뀌면 해당 slide로 translate
   useEffect(() => {
     if(slideRef.current){
@@ -138,21 +135,10 @@ const SearchResult = (props) =>{
             onChange={date => setPlaceDate(date)}
             minDate={minDate}
             maxDate={maxDate}
+            dateFormat='yyyy/MM/dd'
           />
-          <label>시작시간</label>
-          <TimePicker className='react-time-picker' 
-            onChange={setStartAt} 
-            value={startAt}
-            clockIcon={null}
-            clearIcon={null}
-            />
-          <label>종료시간</label>
-          <TimePicker className='react-time-picker' 
-            onChange={setEndAt} 
-            value={endAt}
-            clockIcon={null}
-            clearIcon={null}
-          />
+
+
           
         </div>
         <div className='result-add-btn-wrapper'>
