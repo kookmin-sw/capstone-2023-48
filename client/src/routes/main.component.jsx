@@ -11,7 +11,6 @@ const MainPage = () => {
   const handleActiveComponentChange = (component) => {
     setActiveComponent(component);
   }
-  console.log(activeComponent);
   return(
     <div className='main-page-wrapper'>
       <SideBar handleActiveComponentChange={handleActiveComponentChange}/>      

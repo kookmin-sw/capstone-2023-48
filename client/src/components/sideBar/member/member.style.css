@@ -1,29 +1,30 @@
 .member-wrapper{
   align-items: center;
 }
-  .search-bar-container{  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 50px;
-  }   
-    .search-bar{
-      width: 80%;
-      height: 40px;
-      padding: 5px;
-      font-size: 28px;
-    }
-  
-  .search-result{
-    display: flex;
-    width: 80%;
-    height: fit-content;
-    flex-direction: column;
-    align-items: center;
-    overflow: scroll;
 
-    ::-webkit-scrollbar {
-      width: 0;
-    }
-  }
+.search-bar-container{  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+}
+
+.search-bar{
+  width: 80%;
+  height: 40px;
+  padding: 5px;
+  font-size: 28px;
+}
+  
+.search-result{
+  display: flex;
+  width: 80%;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  height: 0;
+}

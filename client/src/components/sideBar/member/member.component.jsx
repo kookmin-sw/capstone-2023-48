@@ -52,7 +52,6 @@ const Member = (props) =>{
   const [searchId, setSearchId] = useState(''); //searchId 유저에게 input으로 받은 값(이메일)
   const [searchResult, setSearchResult] = useState([]);//초기값 테스트 데이터
   const { currentProject } = useContext(ProjectContext);
-  console.log('curr',currentProject);
 
   const handleChange = async (e) => {
     const { value } = e.target;
@@ -66,8 +65,6 @@ const Member = (props) =>{
     }
     setSearchId(value);
   }
-
-
 
   return(
   <div className='main-content-wrapper member-wrapper' opacity={{zIndex}}>

@@ -18,7 +18,6 @@ const Landing = () => {
 
   useEffect(() => {
     (async function () {
-      console.log(cookies);
       if (cookies.w_auth) {
         const response = await getUser(cookies.user_id);
         setCurrentUser({ email: response.data.id, password: response.data.password });
