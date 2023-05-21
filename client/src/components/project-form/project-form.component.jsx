@@ -18,26 +18,17 @@ const ProjectForm = (props) => {
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
-    
-    //delete projecct from ProjectList
-    {
-
-      
-    }
 
     //change refresh then update projectlist
     setRefresh();
   }
 
   return(
-    <div className="project-form-wrapper"
-    >
+    <div className="project-form-wrapper">
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
-          {console.log('project',project)}
-          <p className='project-place'>{project?.place || '서울특별시'}</p>
-          {/* current유저가 owner인 프로젝트만 삭제버튼 활성화 */}
-          {currentUser?.email === project.owner && 
+          <p className='project-place'>{project.place || '서울특별시'}</p>
+          {currentUser.email === project.owner &&
             <button className='project-delete-btn' onClick={handleDeleteClick}>
               삭제
             </button>
@@ -46,7 +37,7 @@ const ProjectForm = (props) => {
         <div className='project-form-downside'>
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
-            <p className='project-member'>{project?.member || 'user1,user2'}</p>
+            <p className='project-member'>{project.member || 'user1.user2'}</p>
           </div>
         </div>
       </div>
@@ -56,10 +47,4 @@ const ProjectForm = (props) => {
     </div>
   )
 }
-
 export default ProjectForm;
-
-
-
-
-

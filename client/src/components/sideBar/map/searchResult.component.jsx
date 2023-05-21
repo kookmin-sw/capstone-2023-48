@@ -9,7 +9,6 @@ const SearchResult = (props) =>{
 
   
   const { result, setActiveComponent } = props;
-  console.log(result);
   const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,11 +17,10 @@ const SearchResult = (props) =>{
   const [ endAt, setEndAt ] = useState('10:00');
   const slideRef = useRef(null);
   const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
-  const minDate = currentProject.startAt;
-  const maxDate = currentProject.endAt;
-  
+  // const minDate = currentProject.startAt || 1;
+  // const maxDate = currentProject.endAt || 1;
+
   //translate when next/prev button clicked
-  console.log(result.photos[1].getUrl());
   //currentSlide가 바뀌면 해당 slide로 translate
   useEffect(() => {
     if(slideRef.current){
@@ -136,8 +134,8 @@ const SearchResult = (props) =>{
           <DatePicker
             selected={placeDate}
             onChange={date => setPlaceDate(date)}
-            minDate={minDate}
-            maxDate={maxDate}
+            minDate={1}
+            maxDate={1}
           />
           <label>시작시간</label>
           <TimePicker className='react-time-picker' 
