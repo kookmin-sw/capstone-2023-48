@@ -22,14 +22,17 @@ export async function getProjectById(userId) {
 export async function getProjectByProjectId(projectId) {
     const project = await Project.find({ _id: projectId});
     if (project) {
-        return project;
+        return project[0];
     }
 }
 
 export async function addMemberToProject(projectId, memberId) {
     console.log(memberId);
     const project = await getProjectByProjectId(projectId);
-    if (project.member && project.member.length) {
+    console.log('project:',project);
+    console.log('member:',project.member);
+    
+    if (project && project.member.length) {
         const result = await Project.updateOne({ _id: projectId }, { member: [...(project.member), memberId] });
         console.log('!!');
         console.log(result);

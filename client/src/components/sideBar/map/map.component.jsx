@@ -24,7 +24,6 @@ const Map = (props) =>{
     lng: 127.075017
   })
 
-  console.log(result);
 
   const  handlePlacesChange = () => {
     if(searchBoxRef.current && searchBoxRef.current.getPlaces()){

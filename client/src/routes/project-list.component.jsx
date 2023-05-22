@@ -48,6 +48,7 @@ const ProjectList = () => {
             +
           </button>
         </div>
+        {console.log(projectList)}
         {projectList && projectList.map((project) => (
           <ProjectForm key={project.id} project={project} setRefresh={() => setRefresh(refresh + 1)}/>
         ))}

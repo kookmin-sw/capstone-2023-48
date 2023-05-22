@@ -7,18 +7,21 @@
   z-index: 3;
 }
 .chatting-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 8%;
+  font-size: 30px;
+}
+
+.chatting-member{
+  display: flex;
+  height: 5%;
+  align-items: center;
 }
 
 .chatting-body {
-  height: 92%;
+  height: 87%;
   display: flex;
-  padding: 10px;
+  background-color: #daecf5;
 }  
-
-.chatting{
-  background-color: rgb(250, 237, 249);
-  border-radius: 32px;
-  width: 100%;
-  margin: 15px;
-}

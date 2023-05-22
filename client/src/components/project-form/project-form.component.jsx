@@ -19,19 +19,7 @@ const ProjectForm = (props) => {
       if (project) {
         await getUser(project?.owner).then((response)=>{
           setOwnerEmail(response.data.id);
-          
         }); 
-
-        project.member.map((userId) => {
-          (async function(){
-            await getUser(userId).then((response) => {
-              const member = response.data.id.slice(0,response.data.id.indexOf('@'));
-              if(!memberList.includes(member)){
-                setMemberList([...memberList,member]);
-              }
-            })
-          })();
-        })
       }
     })();
   }, [project]);
@@ -63,7 +51,7 @@ const ProjectForm = (props) => {
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
             <p className='project-member'>
-            {memberList.join(' ')}
+            {ownerEmail?.slice(0,ownerEmail.indexOf('@'))}
             </p>
           </div>
         </div>

@@ -12,6 +12,12 @@ export async function getProjectList(userId) {
     return response;
 }
 
+//수정
+export async function getProject(projectId){
+    const response = await api.get(`/projects/project/${projectId}`);
+    return response;
+}
+
 export async function createProject(args) {
     const response = await api.post(`/projects`, args);
     return response;

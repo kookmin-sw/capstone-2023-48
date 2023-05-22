@@ -3,9 +3,7 @@ import './review.style.css';
 
 const Review = (prop) => {
 
-  const {setReviewVisible, reviews} = prop;
-  console.log('reviews',reviews);
-  
+  const {setReviewVisible, reviews} = prop;  
   const handleClose = () => {
     setReviewVisible(false);
   }

@@ -88,7 +88,6 @@ const SearchResult = (props) =>{
   const handleReviewClick = () => {
     setReviewVisible(!reviewVisible);
   }
-  console.log(result);
   return(
     <div className='result-wrapper'>
       {reviewVisible &&
@@ -100,7 +99,6 @@ const SearchResult = (props) =>{
         <div className='result-img-list' ref={slideRef}>
           {result.photos.map((photo) => {
             const url = photo.getUrl();
-            console.log(url);
             return(
               <div className='result-img-list-item' key={url} style={{ backgroundImage: `url(${url})`}}/>
               )

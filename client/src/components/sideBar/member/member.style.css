@@ -23,8 +23,5 @@
   height: fit-content;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
-}
-::-webkit-scrollbar {
-  height: 0;
+  overflow-y: scroll;
 }

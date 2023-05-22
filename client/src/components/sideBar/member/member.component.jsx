@@ -55,11 +55,9 @@ const Member = (props) =>{
 
   const handleChange = async (e) => {
     const { value } = e.target;
-    console.log(value);
     if (value) {
         const result = await searchByEmail(value);
         if (result.data.length) {
-            console.log(result.data);
             setSearchResult(result.data.map((e) => ({ name: e.name, email: e.id, id: e._id})));
         }
     }
@@ -72,7 +70,7 @@ const Member = (props) =>{
       <input className='search-bar' placeholder='이메일로 친구를 검색해보세요' value={searchId} onChange={handleChange}/>
     </div>
     <div className='search-result'>
-      {searchResult.map((user) => (<UserCard key={user._id} user={user}/>))}
+      {searchResult.map((user) => (<UserCard key={user._id} user={user} project={currentProject}/>))}
     </div>
   </div>
   )
