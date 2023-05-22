@@ -25,6 +25,9 @@ const projectSchema = new Schema({
     place:{
         type: String,
     },
+    displayName:{
+        type:[String],
+    }
     //
     // detail_place:{
     //     type: [String],
