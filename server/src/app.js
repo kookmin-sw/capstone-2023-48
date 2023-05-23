@@ -12,6 +12,7 @@ import dotenv from 'dotenv';
 
 import userRouter from './routers/user-router.js';
 import projectRouter from "./routers/project-router.js";
+import planRouter from "./routers/plan-router.js";
 dotenv.config();
 
 const app = express();
@@ -37,6 +38,7 @@ mongoose
 
 app.use('/api/users', userRouter);
 app.use('/api/projects', projectRouter);
+app.use('/api/plans', planRouter);
 
 app.listen(port, () => {
     console.log(`http is listening to ${port}`);

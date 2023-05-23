@@ -29,6 +29,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
       startAt: startDate.getTime(),
       endAt: endDate.getTime(),
       userId: cookies.user_id,
+      days: endDate.getDate() - startDate.getDate(),
     }).then((res) => {
       setRefresh();
     }).catch((error) => {

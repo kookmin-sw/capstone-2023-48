@@ -9,9 +9,9 @@ projectRouter.get('/:userId', async (req, res) => {
     res.send(project);
 });
 projectRouter.post('/', async (req, res) => {
-    const { title, startAt, endAt, userId } = req.body;
+    const { title, startAt, endAt, userId, days } = req.body;
     const project = await createProject({
-        title, startAt, endAt, userId
+        title, startAt, endAt, userId, days
     });
     res.send(project);
 });

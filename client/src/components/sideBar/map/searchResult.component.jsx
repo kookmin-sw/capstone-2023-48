@@ -37,18 +37,20 @@ const SearchResult = (props) =>{
 
   //추가버튼을 누르면 해당 장소를 현재 프로젝트의 places에 push
   const handleAddBtnClick = async () => {
-    // setActiveComponent('detail');
-    await addPlace(
-      currentProject._id, //현재 프로젝트 id
-      result.name, //여행지 이름
-      result.formatted_address, //여행지 주소
-      result.geometry, //여행지 좌표
-      result.photos, // 여행지 사진 Array (최대 length : 10)
+    console.log(result);
+    console.log(currentProject);
+    const response = await addPlace({
+      id: currentProject._id, //현재 프로젝트 id
+      name: result.name, //여행지 이름
+      address: result.formatted_address, //여행지 주소
+      geometry: result.geometry, //여행지 좌표
+      photo: result.photos[0].getUrl(),
+      startAt,
+      endAt,
+    }
       ).then((res) => {
-
       //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
       setCurrentProject(res.data);
-
       //프로젝트 리스트 복사
       const updatedProjectList = [...projectList];
       

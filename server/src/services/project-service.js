@@ -6,6 +6,7 @@ export async function createProject(args) {
         startAt: args.startAt,
         endAt: args.endAt,
         owner: args.userId,
+        days: args.days
     })
     const result = await project.save();
     return result;
@@ -27,7 +28,6 @@ export async function getProjectByProjectId(projectId) {
 }
 
 export async function addMemberToProject(projectId, memberId) {
-    console.log(memberId);
     const project = await getProjectByProjectId(projectId);
     if (project.member && project.member.length) {
         const result = await Project.updateOne({ _id: projectId }, { member: [...(project.member), memberId] });
@@ -41,4 +41,32 @@ export async function addMemberToProject(projectId, memberId) {
         console.log(result);
         return result;
     }
+}
+export async function addPlan(projectId, args) {
+    const project = await getProjectByProjectId(projectId);
+    console.log(project);
+    if (project.plan) {
+        const result = await Project.updateOne({ _id: projectId }, {
+            plan: [...(project.plan), {
+                name: args.name,
+                address: args.address,
+                thumbnail: args.photo,
+                startAt: args.startAt,
+                endAt: args.endAt,
+            }]
+        })
+        return result;
+    } else {
+        const result = await Project.updateOne({ _id: projectId }, {
+            plan: [{
+                name: args.name,
+                address: args.address,
+                thumbnail: args.photo,
+                startAt: args.startAt,
+                endAt: args.endAt,
+            }]
+        })
+        return result;
+    }
+
 }

@@ -22,9 +22,20 @@ const projectSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'User',
     },
-    place:{
-        type: String,
+    plan: {
+        type: [{
+            name: String,
+            startAt: String,
+            endAt: String,
+            thumbnail: String,
+            address: String,
+        }],
+        default: [],
     },
+    days: {
+        type: Number,
+        required: true,
+    }
     //
     // detail_place:{
     //     type: [String],
