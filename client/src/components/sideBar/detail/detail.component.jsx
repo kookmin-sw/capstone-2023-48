@@ -161,10 +161,9 @@ const Detail = (props) =>{
 const {zIndex} = props;
 
 const {currentProject} = useContext(ProjectContext);
-console.log(currentProject);
 const [columns, setColumns] = useState(testData);
 
-  return (
+return (
     <div className='main-content-wrapper detail-plan-wrapper' style={{ display: "flex", zIndex }}>
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}

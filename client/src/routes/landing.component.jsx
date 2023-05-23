@@ -18,7 +18,6 @@ const Landing = () => {
 
   useEffect(() => {
     (async function () {
-      console.log(cookies);
       if (cookies.w_auth) {
         const response = await getUser(cookies.user_id);
         setCurrentUser({ email: response.data.id, password: response.data.password });
@@ -40,8 +39,7 @@ const Landing = () => {
       if(deltaY > 0){
         //scroll down in first page
         if(scrollTop >= 0 && scrollTop < pageHeight) {
-          console.log(pageHeight, scrollTop)
-          console.log(sliderDivRef.current)
+
           sliderDivRef.current.style.transform = `translateY(-${window.deltaY}px)`;
           sliderDivRef.current.scrollTo({
               top: pageHeight,

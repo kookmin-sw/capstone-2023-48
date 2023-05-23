@@ -1,16 +1,29 @@
-import React, {useContext} from 'react';
+import React, {useContext,useEffect,useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
 import './project-form.style.css';
 import moment from "moment";
 import { UserContext } from '../../contexts/user.context'
+import { getUser } from '../../action/user-action';
 
 const ProjectForm = (props) => {
-  const { project, setRefresh } = props;
   const navigate = useNavigate();
   const { setCurrentProject } = useContext(ProjectContext);
   const { currentUser } = useContext(UserContext);
-
+  const { project, setRefresh } = props;
+  const [memberList, setMemberList] = useState([]);
+  const [ownerEmail, setOwnerEmail] = useState();
+  
+  useEffect(() => {
+    (async function () {
+      if (project) {
+        await getUser(project?.owner).then((response)=>{
+          setOwnerEmail(response.data.id);
+        }); 
+      }
+    })();
+  }, [project]);
+  
   const handleProjectClick = () => {
     setCurrentProject(project);
     navigate('/mainpage')
@@ -27,17 +40,19 @@ const ProjectForm = (props) => {
     <div className="project-form-wrapper">
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
-          <p className='project-place'>{project.place || '서울특별시'}</p>
-          {currentUser.email === project.owner &&
-            <button className='project-delete-btn' onClick={handleDeleteClick}>
-              삭제
-            </button>
+          <p className='project-place'>{project?.place || '서울특별시'}</p>
+          {currentUser?.email === ownerEmail && 
+            <div className='project-delete-btn' onClick={handleDeleteClick}>
+              X
+            </div>
           }
         </div>
         <div className='project-form-downside'>
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
-            <p className='project-member'>{project.member || 'user1.user2'}</p>
+            <p className='project-member'>
+            {ownerEmail?.slice(0,ownerEmail.indexOf('@'))}
+            </p>
           </div>
         </div>
       </div>
@@ -48,3 +63,8 @@ const ProjectForm = (props) => {
   )
 }
 export default ProjectForm;
+
+
+
+
+

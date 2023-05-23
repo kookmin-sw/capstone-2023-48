@@ -1,0 +1,42 @@
+.review-container{
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgb(252, 249, 249);
+  width: 80%;
+  left: 10%;
+  height: 63vh;
+  bottom: 20%;
+  overflow-y: scroll;
+  animation:smoothAppear 0.2s ease-in-out 0s 1 normal forwards;;
+  
+}
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-container-close{
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 100%;
+  height: 3vh;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+}
+
+.close{
+  cursor: pointer;
+}

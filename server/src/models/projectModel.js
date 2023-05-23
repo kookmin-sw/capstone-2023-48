@@ -32,6 +32,9 @@ const projectSchema = new Schema({
         }],
         default: [],
     },
+    displayName:{
+        type:[String],
+    },
     days: {
         type: Number,
         required: true,

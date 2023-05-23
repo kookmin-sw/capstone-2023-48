@@ -29,6 +29,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
       startAt: startDate.getTime(),
       endAt: endDate.getTime(),
       userId: cookies.user_id,
+      displayName: currentUser.email.slice(0,currentUser.email.indexOf('@')),
       days: endDate.getDate() - startDate.getDate(),
     }).then((res) => {
       setRefresh();
@@ -40,7 +41,6 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
   }
 
   return(
-    //new-project-form style place in sign-in-form.style.scss , share style with sign-in/sign-up
     <div className='new-project-form-wrapper'>
       <div className='new-project-form'>
         

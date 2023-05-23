@@ -50,6 +50,10 @@ const SignInForm = () => {
     })
   }
 
+  const handleSignUp = () => {
+    navigate('/sign-up')
+  }
+
   return (
     <div className='sign-in-form' >
       <input className='sign-in-input' placeholder="email" type="email" name="email" required onChange={handleChange} value={email}/>
@@ -59,7 +63,7 @@ const SignInForm = () => {
           로그인
         </button>
         <div className='landing-btn-divider'></div>
-        <button className="landing-btn" to='/sign-up'>
+        <button className="landing-btn" onClick={handleSignUp}>
           회원가입
         </button>
       </div>

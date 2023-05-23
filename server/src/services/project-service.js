@@ -1,4 +1,5 @@
 import {Project} from "../models/projectModel.js";
+import { getUserByObjectId } from "../services/user-service.js"
 
 export async function createProject(args) {
     const project = new Project({
@@ -6,6 +7,8 @@ export async function createProject(args) {
         startAt: args.startAt,
         endAt: args.endAt,
         owner: args.userId,
+        member : args.userId,
+        displayName : args.displayName,
         days: args.days
     })
     const result = await project.save();
@@ -23,24 +26,24 @@ export async function getProjectById(userId) {
 export async function getProjectByProjectId(projectId) {
     const project = await Project.find({ _id: projectId});
     if (project) {
-        return project;
+        return project[0];
     }
 }
 
 export async function addMemberToProject(projectId, memberId) {
     const project = await getProjectByProjectId(projectId);
-    if (project.member && project.member.length) {
-        const result = await Project.updateOne({ _id: projectId }, { member: [...(project.member), memberId] });
-        console.log('!!');
-        console.log(result);
+    const member = await getUserByObjectId(memberId);
+    const displayName = member.id.slice(0,member.id.indexOf('@'));
+    console.log('project',project);
+    console.log('displayName',displayName);
 
-        return result;
-    } else {
-        const result = await Project.updateOne({ _id: projectId }, { member: [memberId]});
-        console.log('!');
-        console.log(result);
-        return result;
-    }
+    const result = await Project.updateOne(
+        { _id: projectId },
+        { $push: { member: memberId, displayName: displayName } }
+      );
+
+    // const result = await Project.updateOne({ _id: projectId }, { member: [...(project.member), memberId] },{displayName:[...(project.displayName), displayName]});
+    return result;
 }
 export async function addPlan(projectId, args) {
     const project = await getProjectByProjectId(projectId);

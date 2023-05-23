@@ -1,17 +1,26 @@
 import React from 'react';
 import './chatting-form.style.css';
+import { ProjectContext } from '../../contexts/project.context';
+import { useContext,useState,useEffect } from 'react';
 
 const ChattingForm = () => {
+
+  const { currentProject } = useContext(ProjectContext)
+  console.log(currentProject);
+
   return(
     <div className="chatting-form-wrapper">
       <div className='chatting-header'>        
-        <p className='chatting-header-title'>CHATTING CHANNEL</p>
-        <p>참여자들 :</p>
+       {currentProject && currentProject.title}
+      </div>
+      <div className='chatting-member'>
+        {currentProject.displayName.length > 5 && currentProject.displayName.slice(0,5).join(',')}
+        {currentProject.displayName.length > 5 && '+'}
+        {currentProject.displayName.length <= 5 && currentProject.displayName.join(',')}
       </div>
       <div className='chatting-body'>
-        <div className='chatting'>
-          채팅내역
-        </div>
+
+    
       </div>
     </div>
   )

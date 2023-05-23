@@ -1,5 +1,4 @@
 import React from 'react';
-// import './sign-un-Button.style.scss'
 
 const SignUpButton = (props) => {
     const { onClickButton } = props;

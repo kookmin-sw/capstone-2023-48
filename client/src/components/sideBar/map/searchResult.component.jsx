@@ -2,8 +2,8 @@ import './searchResult.style.css';
 import { addPlace } from '../../../action/plan-action';
 import { ProjectContext } from '../../../contexts/project.context';
 import React, { useContext, useState, useRef, useEffect } from 'react';
-import TimePicker from 'react-time-picker';
 import DatePicker from "react-datepicker";
+import Review from './review.component';
 
 const SearchResult = (props) =>{
 
@@ -11,14 +11,13 @@ const SearchResult = (props) =>{
   const { result, setActiveComponent } = props;
   const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [ currentSlide, setCurrentSlide ] = useState(0);
   const [ placeDate, setPlaceDate ] = useState(new Date());
-  const [ startAt, setStartAt ] = useState('10:00');
-  const [ endAt, setEndAt ] = useState('10:00');
+  const [ reviewVisible, setReviewVisible ] = useState(false);
   const slideRef = useRef(null);
   const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
-  // const minDate = currentProject.startAt || 1;
-  // const maxDate = currentProject.endAt || 1;
+  const minDate = currentProject.startAt;
+  const maxDate = currentProject.endAt;
 
   //translate when next/prev button clicked
   //currentSlide가 바뀌면 해당 slide로 translate
@@ -37,8 +36,6 @@ const SearchResult = (props) =>{
 
   //추가버튼을 누르면 해당 장소를 현재 프로젝트의 places에 push
   const handleAddBtnClick = async () => {
-    console.log(result);
-    console.log(currentProject);
     const response = await addPlace({
       id: currentProject._id, //현재 프로젝트 id
       name: result.name, //여행지 이름
@@ -87,14 +84,20 @@ const SearchResult = (props) =>{
     }
   }
 
+  const handleReviewClick = () => {
+    setReviewVisible(!reviewVisible);
+  }
   return(
     <div className='result-wrapper'>
-      {toggleImgList && 
-        // <ResultImgList key={result.photos.id} photos={result.photos} ref={slideRef}/>
+      {reviewVisible &&
+        <div className='review-wrapper'>
+          <Review setReviewVisible={setReviewVisible} reviews={result.reviews}/>
+        </div>
+      }
+      {toggleImgList &&
         <div className='result-img-list' ref={slideRef}>
           {result.photos.map((photo) => {
             const url = photo.getUrl();
-            console.log(url);
             return(
               <div className='result-img-list-item' key={url} style={{ backgroundImage: `url(${url})`}}/>
               )
@@ -128,35 +131,38 @@ const SearchResult = (props) =>{
           
         </div>
         <div className='result-name-address-rating-wrapper'>
+
           <div className='result-name'>{result.name}</div>
           <div className='result-address'>{result.formatted_address}</div>
-          <div className='result-rating'>{result.rating} {result.user_ratings_total}</div>
+          <div className='result-rating'>
+            {<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 100 100">
+            <polygon points="50 3 63 38 100 38 69 59 82 95 50 75 18 95 31 59 0 38 37 38" fill="#FFD700"/>
+            </svg>}{result.rating}
+            {'  ('}
+            {result.user_ratings_total}{")"}
+          </div>
+          <div className='represent-review' onClick={handleReviewClick}>{result.reviews && result.reviews[0].text.slice(0,50)}{result.reviews && '...'}</div>
+
+
         </div>
-        <div className='react-time-picker-wrapper'>
+        <div className='react-time-picker-container'>
+          <label>날짜 및 시간</label>
           <DatePicker
+            placeholderText='날짜와 시간 정하기'
             selected={placeDate}
             onChange={date => setPlaceDate(date)}
-            minDate={1}
-            maxDate={1}
+            minDate={minDate}
+            maxDate={maxDate}
+            showTimeSelect
+            withPortal
+            portalId="root-portal"
+            timeIntervals={30}
+            timeCaption="시간"
+            dateFormat='MM/dd h:mm aa'
+            className='react-time-picker'
           />
-          <label>시작시간</label>
-          <TimePicker className='react-time-picker' 
-            onChange={setStartAt} 
-            value={startAt}
-            clockIcon={null}
-            clearIcon={null}
-            />
-          <label>종료시간</label>
-          <TimePicker className='react-time-picker' 
-            onChange={setEndAt} 
-            value={endAt}
-            clockIcon={null}
-            clearIcon={null}
-          />
-          
-        </div>
-        <div className='result-add-btn-wrapper'>
           <button className='result-add-btn' onClick={handleAddBtnClick}>추가</button>
+
         </div>
       </div>
     </div>

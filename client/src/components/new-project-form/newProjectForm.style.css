@@ -1,6 +1,6 @@
 .new-project-form-wrapper{
   position:fixed;
-  z-index: 3;
+  z-index: 6;
   left: calc(50% - 250px);
   background-color: #ffd0d5;
   width: 500px;
