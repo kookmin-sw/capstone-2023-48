@@ -44,7 +44,5 @@ export async function addMemberToProject(projectId, memberId) {
         { _id: projectId },
         { $push: { member: memberId, displayName: displayName } }
       );
-      
-    // const result = await Project.updateOne({ _id: projectId }, { member: [...(project.member), memberId] },{displayName:[...(project.displayName), displayName]});
     return result;
 }

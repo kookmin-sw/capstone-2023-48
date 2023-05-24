@@ -19,9 +19,8 @@ const ChattingForm = () => {
         {currentProject.displayName.length <= 5 && currentProject.displayName.join(',')}
       </div>
       <div className='chatting-body'>
-
-    
       </div>
+      <div className='chatting-input'></div>
     </div>
   )
 }
