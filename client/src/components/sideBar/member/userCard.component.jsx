@@ -15,7 +15,6 @@ const UserCard = (props) => {
     });
        
     await getProject(project._id).then((res) => {
-      console.log(res.data);
       setCurrentProject(res.data);
     })
   }

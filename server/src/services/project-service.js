@@ -47,7 +47,6 @@ export async function addMemberToProject(projectId, memberId) {
 }
 export async function addPlan(projectId, args) {
     const project = await getProjectByProjectId(projectId);
-    console.log(project);
     if (project.plan) {
         const result = await Project.updateOne({ _id: projectId }, {
             plan: [...(project.plan), {
@@ -55,7 +54,7 @@ export async function addPlan(projectId, args) {
                 address: args.address,
                 thumbnail: args.photo,
                 startAt: args.startAt,
-                endAt: args.endAt,
+                day: args.day,
             }]
         })
         return result;
@@ -66,7 +65,7 @@ export async function addPlan(projectId, args) {
                 address: args.address,
                 thumbnail: args.photo,
                 startAt: args.startAt,
-                endAt: args.endAt,
+                day: args.day,
             }]
         })
         return result;

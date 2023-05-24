@@ -7,16 +7,16 @@ planRouter.get('/:userId', async (req, res) => {
 
 });
 planRouter.post('/', async (req, res) => {
-    const { id, name, address, geometry, photo, startAt, endAt } = req.body;
+    const { id, name, address, geometry, photo, startAt, day } = req.body;
     const result = await addPlan(id, {
         name,
         address,
         geometry,
         photo,
+        day,
         startAt,
-        endAt
     })
-    console.log(result);
+    res.send({ success: true, result });
 });
 
 

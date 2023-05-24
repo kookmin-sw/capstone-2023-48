@@ -15,7 +15,6 @@ export const api = axios.create({
       // result.geometry, //여행지 좌표
       // result.photos, // 여행지 사진 Array (최대 length : 10)
 export async function addPlace(args){
-    console.log(args);
   const response = await api.post(`/plans`, args);
   return response;
 }

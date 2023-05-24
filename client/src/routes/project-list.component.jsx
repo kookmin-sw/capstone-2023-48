@@ -7,6 +7,7 @@ import {useCookies} from "react-cookie";
 import {getProjectList} from "../action/project-action";
 import { UserContext } from '../contexts/user.context';
 import React from 'react';
+import {getUser} from "../action/user-action";
 
 const ProjectList = () => {
   const { displayUserName } = useContext(UserContext);
@@ -14,10 +15,14 @@ const ProjectList = () => {
   const { setProjectList } = useContext(ProjectContext);
   const [cookies, setCookies] = useCookies();
   const [refresh, setRefresh] = useState(0);
-
+  const { setCurrentUser } = useContext(UserContext);
+  const { setDisplayUserName } = useContext(UserContext);
   useEffect(() => {
     (async function () {
       if (cookies.w_auth) {
+        const res = await getUser(cookies.user_id);
+        setCurrentUser({ email: res.data.id, password: res.data.password });
+        setDisplayUserName(res.data.id.substring(0, res.data.id.indexOf("@")));
         const response = await getProjectList(cookies.user_id);
         if (response.data.length !== 0) {
           setProjectList(response.data);

@@ -26,9 +26,9 @@ const projectSchema = new Schema({
         type: [{
             name: String,
             startAt: String,
-            endAt: String,
             thumbnail: String,
             address: String,
+            day: Number,
         }],
         default: [],
     },

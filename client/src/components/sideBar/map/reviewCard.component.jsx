@@ -1,5 +1,5 @@
 import './reviewCard.style.css';
-
+import React from "react";
 const ReviewCard = (prop) => {
   const {review} = prop;
 
