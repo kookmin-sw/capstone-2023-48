@@ -1,10 +1,10 @@
 import React, {useContext,useEffect,useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ProjectContext } from '../../contexts/project.context';
 import './project-form.style.css';
 import moment from "moment";
 import { UserContext } from '../../contexts/user.context'
-import { getUser } from '../../action/user-action';
+// import { getUser } from '../../action/user-action';
 
 const ProjectForm = (props) => {
   const navigate = useNavigate();
@@ -17,31 +17,29 @@ const ProjectForm = (props) => {
   useEffect(() => {
     (async function () {
       if (project) {
-        await getUser(project?.owner).then((response)=>{
-          setOwnerEmail(response.data.id);
-        }); 
+        // await getUser(project?.owner).then((response)=> {
+        //   setOwnerEmail(response.data.id);
+        // });
       }
     })();
   }, [project]);
-  
+
   const handleProjectClick = () => {
     setCurrentProject(project);
-    navigate('/mainpage')
+    navigate(`/mainpage/${project._id}`);
   }
 
   const handleDeleteClick = (event) => {
     event.stopPropagation();
-
     //change refresh then update projectlist
     setRefresh();
   }
-
   return(
     <div className="project-form-wrapper">
       <div className='project-form-link' onClick={handleProjectClick}>
         <div className='project-form-upside'>
-          <p className='project-place'>{project?.place || '서울특별시'}</p>
-          {currentUser?.email === ownerEmail && 
+          <p className='project-place'>{project && project.place || '부산광역시'}</p>
+          {currentUser && currentUser.email && currentUser.email === ownerEmail &&
             <div className='project-delete-btn' onClick={handleDeleteClick}>
               X
             </div>
@@ -51,7 +49,7 @@ const ProjectForm = (props) => {
           <p className='project-date'>{moment(project.startAt).format('YYYY-MM-DD')}</p>
           <div className='project-form-member'>
             <p className='project-member'>
-            {ownerEmail?.slice(0,ownerEmail.indexOf('@'))}
+            {ownerEmail && ownerEmail.slice(0, ownerEmail.indexOf('@'))}
             </p>
           </div>
         </div>

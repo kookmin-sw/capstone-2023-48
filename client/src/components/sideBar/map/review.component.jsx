@@ -1,3 +1,4 @@
+import React from "react";
 import ReviewCard from "./reviewCard.component";
 import './review.style.css';
 

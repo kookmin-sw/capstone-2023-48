@@ -22,11 +22,22 @@ const projectSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'User',
     },
-    place:{
-        type: String,
+    plan: {
+        type: [{
+            name: String,
+            startAt: String,
+            thumbnail: String,
+            address: String,
+            day: Number,
+        }],
+        default: [],
     },
     displayName:{
         type:[String],
+    },
+    days: {
+        type: Number,
+        required: true,
     }
     //
     // detail_place:{

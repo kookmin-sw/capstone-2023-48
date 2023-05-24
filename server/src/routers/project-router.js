@@ -17,9 +17,9 @@ projectRouter.get('/project/:projectId', async (req, res) => {
 
 
 projectRouter.post('/', async (req, res) => {
-    const { title, startAt, endAt, userId, displayName } = req.body;
+    const { title, startAt, endAt, userId, days, displayName } = req.body;
     const project = await createProject({
-        title, startAt, endAt, userId, displayName
+        title, startAt, endAt, userId, days, displayName
     });
     res.send(project);
 });

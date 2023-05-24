@@ -6,47 +6,6 @@ import { searchByEmail } from '../../../action/search-action';
 import { ProjectContext } from '../../../contexts/project.context';
 
 //검색 결과 테스트 데이터
-const test_search_result = 
-  [
-    {
-      "name": "홍길동1",
-      "email": "user1@naver.com"
-    },
-    {
-      "name": "홍길동2",
-      "email": "user2@naver.com"
-    },
-    {
-      "name": "홍길동3",
-      "email": "user3@naver.com"
-    },
-    {
-      "name": "홍길동4",
-      "email": "user4@naver.com"
-    },
-    {
-      "name": "홍길동5",
-      "email": "user5@naver.com"
-    },
-    {
-      "name": "홍길동6",
-      "email": "user6@naver.com"
-    },
-    {
-      "name": "홍길동7",
-      "email": "user7@naver.com"
-    },
-    {
-      "name": "홍길동8",
-      "email": "user8@naver.com"
-    },
-    {
-      "name": "홍길동9",
-      "email": "user9@naver.com"
-    }
-  ]
-
-
 const Member = (props) =>{
   const {zIndex} = props;
   const [searchId, setSearchId] = useState(''); //searchId 유저에게 input으로 받은 값(이메일)

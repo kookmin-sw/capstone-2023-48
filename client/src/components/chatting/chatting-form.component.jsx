@@ -3,14 +3,11 @@ import './chatting-form.style.css';
 import { ProjectContext } from '../../contexts/project.context';
 import { useContext,useState,useEffect } from 'react';
 
-const ChattingForm = () => {
-
-  const { currentProject } = useContext(ProjectContext)
-  console.log(currentProject);
-
+const ChattingForm = (props) => {
+  const { currentProject } = props;
   return(
     <div className="chatting-form-wrapper">
-      <div className='chatting-header'>        
+      <div className='chatting-header'>
        {currentProject && currentProject.title}
       </div>
       <div className='chatting-member'>

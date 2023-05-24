@@ -16,7 +16,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
 
   //post userId by current user (ex. 1234@naver.com)
   const {currentUser} = useContext(UserContext);
-  console.log(currentUser);
+
   const handleTitleChange = (e) => {
     const {value} = e.target;
     setProjectTitle(value);
@@ -30,6 +30,7 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
       endAt: endDate.getTime(),
       userId: cookies.user_id,
       displayName: currentUser.email.slice(0,currentUser.email.indexOf('@')),
+      days: endDate.getDate() - startDate.getDate(),
     }).then((res) => {
       setRefresh();
     }).catch((error) => {
