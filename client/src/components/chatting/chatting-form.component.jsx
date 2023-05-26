@@ -17,6 +17,7 @@ const ChattingForm = (props) => {
       </div>
       <div className='chatting-body'>
       </div>
+      <div className='chatting-input'></div>
     </div>
   )
 }

@@ -101,15 +101,16 @@ const SearchResult = (props) =>{
   const handleReviewClick = () => {
     setReviewVisible(!reviewVisible);
   }
+
   return(
       <div className='result-wrapper'>
         {reviewVisible &&
-            <div className='review-wrapper'>
+            <div className='review-wrapper' onClick={handleReviewClick}>
               <Review setReviewVisible={setReviewVisible} reviews={result.reviews}/>
             </div>
         }
         {toggleImgList &&
-            <div className='result-img-list' ref={slideRef}>
+            <div className='result-img-list' ref={slideRef} onClick={handleImgListCloseBtnClick}>
               {result.photos.map((photo) => {
                 const url = photo.getUrl();
                 return(
@@ -148,7 +149,7 @@ const SearchResult = (props) =>{
 
             <div className='result-name'>{result.name}</div>
             <div className='result-address'>{result.formatted_address}</div>
-            <div className='result-rating'>
+            <div className='result-rating' onClick={handleReviewClick}>
               {<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 100 100">
                 <polygon points="50 3 63 38 100 38 69 59 82 95 50 75 18 95 31 59 0 38 37 38" fill="#FFD700"/>
               </svg>}{result.rating}

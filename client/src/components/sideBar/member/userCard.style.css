@@ -11,8 +11,24 @@
 }
 
   .user-card-invite-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 60px;
     height: 40px;
-    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
     font-size: 16px;
+    color: #ffd0d5;
+    background: rgb(18, 18, 18);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
   }
+
+  .user-card-invite-btn:hover{
+    background-color: #4b4b4b;
+  }
+  

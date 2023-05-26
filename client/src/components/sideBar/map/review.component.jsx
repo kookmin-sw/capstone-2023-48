@@ -5,16 +5,14 @@ import './review.style.css';
 const Review = (prop) => {
 
   const {setReviewVisible, reviews} = prop;  
-  const handleClose = () => {
-    setReviewVisible(false);
+  
+  const handleClick = (event) => {
+    event.preventDefault();
   }
   
   return(
     
-    <div className="review-container">
-      <div className="review-container-close">
-        <div className="close" onClick={handleClose}>X</div>
-      </div>
+    <div className="review-container" onClick={handleClick}>
       {reviews.map((review) => (
         <ReviewCard key={review.author_url} review={review}/>
       ))}

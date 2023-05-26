@@ -6,37 +6,37 @@
   padding-top: 30px;
   font-family: "LINESeedKR-Rg";
 }
-  .sign-in-input{
-    appearance: none;
-    outline: none;
-    background: none;
-    box-shadow: none;
-    border: none;
-    background-color: #ffd0d5;
-    width: 420px;
-    height: 2em;
-    line-height: 2em;
-    border-bottom: 2px solid #171313;
-    font-size: 28px;
-    margin-top: 6px;
-  }
+.sign-in-input{
+  appearance: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+  border: none;
+  background-color: #ffd0d5;
+  width: 420px;
+  height: 2em;
+  line-height: 2em;
+  border-bottom: 2px solid #171313;
+  font-size: 28px;
+  margin-top: 6px;
+}
 
-  .sign-in-btn-container{
-    display: flex;
-    justify-content: center;
-    width: 420px;
-    padding: auto;
-    margin-top: 25px;
-  }
+.sign-in-btn-container{
+  display: flex;
+  justify-content: center;
+  width: 420px;
+  padding: auto;
+  margin-top: 25px;
+}
 
-  h2{
-    font-size: 30px;
-    color:#171313;
-  }
+h2{
+  font-size: 30px;
+  color:#171313;
+}
 
-  p{
-    color: black;
-  }
+p{
+  color: black;
+}
 
 
 .landing-btn{

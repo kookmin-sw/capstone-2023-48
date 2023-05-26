@@ -45,12 +45,9 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
       <div className='new-project-form'>
         
         <button className='exit-btn' onClick={onClose}>X</button>
-        <label>
-          프로젝트 제목
-        </label>
-        <input type='text' name='projectTitle' onChange={handleTitleChange} required/>
+        <h1>새로운 프로젝트</h1>
+        <input placeholder='프로젝트 제목' type='text' name='projectTitle' onChange={handleTitleChange} required/>
         <div className='date-picker'>
-          <label htmlFor="start-date">시작일</label>
           <DatePicker
             className='date-picker-input'
             selected={startDate}
@@ -58,8 +55,8 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
             dateFormat="yyyy-MM-dd"
             selectsStart
             readOnly={false}
+            placeholderText='시작일'
             />
-          <label htmlFor="end-date">종료일</label>
           <DatePicker
             className='date-picker-input'
             selected={endDate}
@@ -67,7 +64,8 @@ const NewProjectForm = ({onClose, setRefresh}) =>{
             dateFormat="yyyy-MM-dd"
             endDate
             readOnly={false}
-          />
+            placeholderText='종료일'
+            />
         </div>
         <button type="button" className='new-project-submit-btn' onClick={handleNewProjectSubmit}>새 프로젝트 생성</button>
      </div>

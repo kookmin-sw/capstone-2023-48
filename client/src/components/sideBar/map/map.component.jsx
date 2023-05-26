@@ -37,7 +37,7 @@ const Map = (props) =>{
   }
   
   return(
-    <div className='main-content-wrapper' style={{zIndex}}>
+    <div className='main-content-wrapper map-wrapper' style={{zIndex}}>
       
       <LoadScript
         googleMapsApiKey= {GOOGLE_MAPS_API_KEY}
