@@ -6,7 +6,7 @@ import { GOOGLE_MAPS_API_KEY, GOOGLE_MAPS_LIBRARIES } from './config'; // 상수
 import SearchResult from './searchResult.component';
 
 const Map = (props) =>{
-  const {setActiveComponent, zIndex} = props;
+  const {setActiveComponent, zIndex, setRefresh} = props;
   const containerStyle = {
     width: '100%',
     height: '100%'
@@ -77,7 +77,7 @@ const Map = (props) =>{
           </StandaloneSearchBox>
         </GoogleMap>
       </LoadScript>
-      {result && <SearchResult result={result} setActiveComponent={setActiveComponent}/>}
+      {result && <SearchResult setRefresh={setRefresh} result={result} setActiveComponent={setActiveComponent}/>}
     </div>
   )
 }

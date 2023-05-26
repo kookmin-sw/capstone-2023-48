@@ -217,10 +217,17 @@ const Detail = (props) => {
                                                  }}
                                             >
                                                 {column.items.map((item, index) => {
+                                                    const date = new Date(item.startAt);
+                                                    const year = date.getFullYear();
+                                                    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                                                    const day = date.getDate().toString().padStart(2, '0');
+                                                    const hours = date.getHours().toString().padStart(2, '0');
+                                                    const minutes = date.getMinutes().toString().padStart(2, '0');
+                                                    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
                                                     return (
                                                         <Draggable
-                                                            key={item.id}
-                                                            draggableId={item.id}
+                                                            key={item._id}
+                                                            draggableId={item._id}
                                                             index={index}
                                                         >
                                                             {(provided, snapshot) => {
@@ -239,8 +246,8 @@ const Detail = (props) => {
                                                                             ...provided.draggableProps.style
                                                                         }}
                                                                     >
-                                                                        <div>{item.place_title}</div>
-                                                                        <div>{item.startAt}</div>
+                                                                        <div>{item.name}</div>
+                                                                        <div>{formattedDate}</div>
                                                                     </div>
                                                                 );
                                                             }}

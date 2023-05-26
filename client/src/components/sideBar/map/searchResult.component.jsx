@@ -8,7 +8,7 @@ import Review from './review.component';
 const SearchResult = (props) =>{
 
 
-  const { result, setActiveComponent } = props;
+  const { result, setActiveComponent, setRefresh } = props;
   const { setCurrentProject, currentProject, setProjectList, projectList } = useContext(ProjectContext);
   const [ toggleImgList, setToggleImgList ] = useState(false);
   const [ currentSlide, setCurrentSlide ] = useState(0);
@@ -54,6 +54,7 @@ const SearchResult = (props) =>{
           }
       ).then((res) => {
         if (res.data.success) {
+          setRefresh();
           setActiveComponent('detail');
         }
         // //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장

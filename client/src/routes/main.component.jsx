@@ -14,6 +14,7 @@ import {UserContext} from "../contexts/user.context";
 
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState('home');
+  const [refresh, setRefresh] = useState(0);
   const [cookies, setCookies] = useCookies();
   const { setCurrentProject } = useContext(ProjectContext);
   const { setCurrentUser } = useContext(UserContext);
@@ -31,7 +32,7 @@ const MainPage = () => {
               }
           }
       })();
-  }, [query])
+  }, [query, refresh])
   const handleActiveComponentChange = (component) => {
     setActiveComponent(component);
   }
@@ -39,7 +40,7 @@ const MainPage = () => {
   return(
     <div className='main-page-wrapper'>
       <SideBar handleActiveComponentChange={handleActiveComponentChange}/>      
-      <Map setActiveComponent={setActiveComponent} zIndex={activeComponent === 'home' ? 1 : 0 }/>
+      <Map setRefresh={() => setRefresh(refresh + 1)} setActiveComponent={setActiveComponent} zIndex={activeComponent === 'home' ? 1 : 0 }/>
       <Detail zIndex={activeComponent === 'detail' ? 1 : 0 }/>
       <Member zIndex={activeComponent === 'member' ? 1 : 0 }/>
       { currentProject && <ChattingForm currentProject={currentProject}/>}
