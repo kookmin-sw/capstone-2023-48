@@ -6,7 +6,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
 export const api = axios.create({
-    baseURL: 'http://localhost:5001/api',
+    baseURL: 'http://35.78.64.250:5001/api',
 });
 
 //email과 일치하는 모든 user 반환
