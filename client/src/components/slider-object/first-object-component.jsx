@@ -15,8 +15,6 @@ const FirstObject = () => {
           <div className="sign-in-earth"/>
         </div>
       </div>
-      <span>Scroll ↓</span>
-      <div className="scroll">Scroll ↓</div>
     </div>
   )
 };

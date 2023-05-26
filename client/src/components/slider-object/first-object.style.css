@@ -1,8 +1,9 @@
 .slider{
   width:100%;
   overflow-y: auto;
-  height:279vh;
+  height:93vh;
   z-index: 1;
+  overflow: scroll;
 }
 
 .slider::-webkit-scrollbar {
