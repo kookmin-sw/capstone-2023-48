@@ -60,7 +60,10 @@ github: https://github.com/kimkh1228
   
  -WAGO 웹페이지에 접속합니다.
  
--아이디가 있으면 로그인을 하고 없으면 회원가입을 합니다.  
+-아이디가 있으면 로그인을 하고 없으면 회원가입을 합니다.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/122005272/241124456-a148c079-c33c-47ef-9265-275a7657a687.png">
+</p>  
 
 -이전에 생성한 프로젝트가 있다면 해당 프로젝트를 클릭하여 메인페이지로 들어갑니다.
 
