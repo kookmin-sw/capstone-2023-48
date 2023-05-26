@@ -36,9 +36,11 @@ const ProjectForm = (props) => {
   }
   return(
     <div className="project-form-wrapper">
-      <div className='project-form-link' onClick={handleProjectClick} style={{ backgroundImage: `url(${project.plan[0]?.thumbnail})`}}>
+      <div className='project-form-link' onClick={handleProjectClick} style={{
+        backgroundImage: project.plan[0] ? `url(${project.plan[0].thumbnail})` : 'none'
+      }}>
         <div className='project-form-upside'>
-          <p className='project-place'>{project && project.plan[0].address.split(' ')[1] || project.title}</p>
+          <p className='project-place'>{project && project.plan[0] && project.plan[0].address.split(' ')[1] || project.title}</p>
           {currentUser && currentUser.email && currentUser.email === ownerEmail &&
             <div className='project-delete-btn' onClick={handleDeleteClick}>
               X
