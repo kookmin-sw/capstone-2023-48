@@ -175,7 +175,6 @@ const Detail = (props) => {
                     }
                 })
             }
-            console.log(array);
             // setColumns(array);
         }
     }, [currentProject])

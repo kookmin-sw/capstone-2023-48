@@ -15,6 +15,7 @@ const SearchResult = (props) =>{
   const [ placeDate, setPlaceDate ] = useState(new Date());
   const [ reviewVisible, setReviewVisible ] = useState(false);
   const slideRef = useRef(null);
+  const [money, setMoney] = useState();
   const TOTAL_SLIDES = result.photos ? result.photos.length-1 : 0;
   const minDate = currentProject.startAt;
   const maxDate = currentProject.endAt;
@@ -49,6 +50,7 @@ const SearchResult = (props) =>{
             photo: result.photos[0].getUrl(),
             day: daysDiff,
             startAt: placeDate,
+            money,
           }
       ).then((res) => {
         if (res.data.success) {
@@ -159,7 +161,7 @@ const SearchResult = (props) =>{
           </div>
           <div className='react-time-picker-container'>
             <label>예상 금액</label>
-            <input type="number" />
+            <input type="number" value={money} onChange={(e) => setMoney(e.target.value)}/>
             <label>날짜 및 시간</label>
             <DatePicker
                 placeholderText='날짜와 시간 정하기'
