@@ -53,9 +53,9 @@ const SearchResult = (props) =>{
             money,
           }
       ).then((res) => {
-        if (res.data.success) {
-          setActiveComponent('detail');
-        }
+        // if (res.data.success) {
+        //   setActiveComponent('detail');
+        // }
         // //업데이트 된 프로젝트 데이터를 res로 받아서 currentProject에 저장
         // console.log(res);
         // setCurrentProject(res.data);

@@ -102,8 +102,8 @@ const Landing = () => {
   return (
     <div ref={sliderDivRef} className="slider">
       <FirstObject/>
-      <SecondObject/>
-      <ThirdObject/>
+      {/* <SecondObject/>
+      <ThirdObject/> */}
     </div>
   );
 };
