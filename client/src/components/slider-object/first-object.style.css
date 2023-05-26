@@ -18,6 +18,7 @@
   align-items: center;
   background-color: #ffd0d5;
   justify-content: center;
+  overflow: scroll;
 }
   
   .scroll{
@@ -25,6 +26,8 @@
   }
 
 .sign-in-wrapper{
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: row;
   height: 100%;

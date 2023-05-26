@@ -48,7 +48,7 @@ const ProjectList = () => {
         { newProjectFormVisible && 
           <NewProjectForm onClose={toggleFormVisible} setRefresh={() => setRefresh(refresh + 1)}/>
         }
-        <div>
+        <div className='new-project-btn-container'>
           <button className='new-project-btn' onClick={toggleFormVisible}>
             +
           </button>
