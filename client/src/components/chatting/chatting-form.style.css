@@ -26,4 +26,42 @@
   height: 89%;
   display: flex;
   background-color: #daecf5;
-}  
+  padding: 20px;
+  flex-direction: column;
+  gap: 15px;
+
+}
+.chatting-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px;
+}
+.chatting-input > input {
+    margin: 0 !important;
+  border: none;
+  border-bottom: 1px solid #000;
+  text-decoration: none;
+}
+
+.chatting-button {
+  width: 80px;
+  height: 40px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+.chatting-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.chatting-message {
+  font-size: 16px;
+}
+.chatting-name {
+  font-size: 20px;
+}

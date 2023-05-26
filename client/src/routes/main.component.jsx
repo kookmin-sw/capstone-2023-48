@@ -43,7 +43,7 @@ const MainPage = () => {
       <Map setRefresh={() => setRefresh(refresh + 1)} setActiveComponent={setActiveComponent} zIndex={activeComponent === 'home' ? 1 : 0 }/>
       <Detail zIndex={activeComponent === 'detail' ? 1 : 0 }/>
       <Member zIndex={activeComponent === 'member' ? 1 : 0 }/>
-      { currentProject && <ChattingForm currentProject={currentProject}/>}
+      { currentProject && <ChattingForm setRefresh={() => setRefresh(refresh + 1)} currentProject={currentProject}/>}
     </div>
   )
 }

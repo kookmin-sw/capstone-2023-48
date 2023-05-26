@@ -1,5 +1,5 @@
 import {Project} from "../models/projectModel.js";
-import { getUserByObjectId } from "../services/user-service.js"
+import {getUserById, getUserByObjectId} from "../services/user-service.js"
 
 export async function createProject(args) {
     const project = new Project({
@@ -69,4 +69,26 @@ export async function addPlan(projectId, args) {
         return result;
     }
 
+}
+
+export async function addChat(projectId, message, email) {
+    const user = await getUserById(email);
+    const project = await getProjectByProjectId(projectId);
+    if (project.plan) {
+        const result = await Project.updateOne({ _id: projectId }, {
+            chat: [...(project.chat), {
+                name: user.name,
+                message: message,
+            }]
+        })
+        return result;
+    } else {
+        const result = await Project.updateOne({ _id: projectId }, {
+            chat: [{
+                name: user.name,
+                message: message,
+            }]
+        })
+        return result;
+    }
 }

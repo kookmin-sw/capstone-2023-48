@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true; // withCredentials 전역 설정
 
 export const api = axios.create({
-    baseURL: 'http://35.78.64.250:5001/api',
+    baseURL: 'http://localhost:5001/api',
 });
 
 export async function getProjectList(userId) {
@@ -37,5 +37,10 @@ export async function addMemberToProject(projectId, memberId){
 
 export async function updatePlaces(args){
     const response = await api.post(`/projects/places`, args);
+    return response;
+}
+
+export async function createChatting(projectId, message, email) {
+    const response = await api.post(`projects/chatting/${projectId}`, { message, email });
     return response;
 }

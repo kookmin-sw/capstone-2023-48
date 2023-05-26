@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import {addMemberToProject, createProject, getProjectById, getProjectByProjectId} from "../services/project-service.js";
+import {
+    addChat,
+    addMemberToProject,
+    createProject,
+    getProjectById,
+    getProjectByProjectId
+} from "../services/project-service.js";
 const projectRouter = Router();
 
 
@@ -28,6 +34,12 @@ projectRouter.post('/member', async (req, res) => {
     const { projectId, memberId } = req.body;
     const result = await addMemberToProject(projectId, memberId);
     res.send(result);
+});
+projectRouter.post('/chatting/:projectId', async (req, res) => {
+    const { message, email } = req.body;
+    const { projectId } = req.params
+    const result = await addChat(projectId, message, email);
+    res.send({ result: result, success: true });
 });
 export default projectRouter;
 

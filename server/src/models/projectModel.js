@@ -38,7 +38,14 @@ const projectSchema = new Schema({
     days: {
         type: Number,
         required: true,
-    }
+    },
+    chat: {
+        type: [{
+            name: String,
+            message: String,
+        }],
+        default: [],
+    },
     //
     // detail_place:{
     //     type: [String],
